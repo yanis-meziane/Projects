@@ -1,3 +1,4 @@
+package personnage;
 public class Personnage {
 
     protected String firstname;
