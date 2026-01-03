@@ -8,7 +8,6 @@ public class Personnage {
     protected int defense;
     protected String Arme;
 
-    // Constructeur par défaut - REMPLACER LES VIRGULES PAR DES POINTS-VIRGULES
     Personnage() {
         this.firstname = "null";
         this.lastname = "null";
@@ -19,7 +18,6 @@ public class Personnage {
         this.Arme = "null";
     }
 
-    // Constructeur avec paramètres - REMPLACER LES VIRGULES PAR DES POINTS-VIRGULES
     Personnage(String firstname, String lastname, int PV, int PM, int attaque, int defense, String Arme) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -30,7 +28,8 @@ public class Personnage {
         this.Arme = Arme;
     }
 
-    // SETTERS - doivent être VOID et MODIFIER la valeur (pas return)
+    // SETTERS
+
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
@@ -59,7 +58,8 @@ public class Personnage {
         this.Arme = Arme;
     }
 
-    // GETTERS - OK sauf les fautes de frappe et types de retour
+    // GETTERS
+
     public String getFirstname() {
         return this.firstname;
     }
@@ -73,7 +73,7 @@ public class Personnage {
     }
 
     public int getPM() {
-        return this.PM;  // "retunr" corrigé
+        return this.PM;
     }
 
     public int getAttaque() {
@@ -84,7 +84,7 @@ public class Personnage {
         return this.defense;
     }
 
-    public String getArme() {  // doit retourner String, pas int
+    public String getArme() {
         return this.Arme;
     }
 
