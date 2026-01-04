@@ -4,8 +4,8 @@ public class testAmazone {
         System.out.println("=== Amazone sans paramètres ===");
         System.out.println(a1);
 
-        Amazone a2 = new Amazone("Julie","Harpie",50,35,8,12,"Arc");
-        System.out.println("=== Amazone avec paramètres ===");
+        Amazone a2 = new Amazone("Julie", "Harpie", 50, 35, 8, 12, "Arc");
+        System.out.println("\n=== Amazone avec paramètres ===");
         System.out.println(a2);
     }
 }

@@ -1,13 +1,10 @@
-package personnage.combattants;
-import personnage. * ;
-
-public class Amazone extends Combattant{
-    public Amazone(){
+public class Amazone extends Combattant {
+    public Amazone() {
         super();
     }
 
-    public Amazone(String firstname, String lastname, int PV, int PM, int attaque, int defense, String Arme){
-        super(firstname,lastname,PV,PM,attaque,defense,Arme);
+    public Amazone(String firstname, String lastname, int PV, int PM, int attaque, int defense, String Arme) {
+        super(firstname, lastname, PV, PM, attaque, defense, Arme);
     }
 
     @Override

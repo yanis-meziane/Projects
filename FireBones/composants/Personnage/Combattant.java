@@ -1,4 +1,3 @@
-package personnage;
 public class Combattant extends Personnage{
 
     public Combattant(){
