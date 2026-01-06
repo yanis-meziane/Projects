@@ -1,3 +1,4 @@
+package composants.Personnage;
 public class Amazone extends Combattant {
     public Amazone() {
         super();
@@ -7,6 +8,10 @@ public class Amazone extends Combattant {
         super(firstname, lastname, PV, PM, attaque, defense, Arme);
     }
 
+    public static Amazone getAmazone(){
+        return new Amazone("Julie", "Harpie", 50, 35, 8, 12, "Arc");
+    }
+
     @Override
     public String toString() {
         return "L'Amazone s'appelle " + firstname + " " + lastname + "\n" +
@@ -14,4 +19,6 @@ public class Amazone extends Combattant {
                 "Attaque : " + attaque + " | Défense : " + defense + "\n" +
                 "Arme : " + Arme;
     }
+
 }
+

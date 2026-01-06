@@ -1,3 +1,4 @@
+package composants.Personnage;
 public class Combattant extends Personnage{
 
     public Combattant(){

@@ -1,3 +1,4 @@
+package composants.Monstre;
 public class Monstre{
 
     protected String firstname;

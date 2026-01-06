@@ -1,8 +1,12 @@
+package composants.Monstre;
 public class Gobelin extends Monstre{
     public Gobelin(){
         super();
     }
 
+    public static Gobelin getGobelin(){
+        return  new Gobelin("Pierre","Yves",50,4,3,"Terre","Empaler");
+    }
     public Gobelin(String firstname,String lastname, int PV, int Attaque, int Defense,String type_elementaire,String capacite_special){
         super(firstname,lastname,PV,Attaque,Defense,type_elementaire,capacite_special);
     }

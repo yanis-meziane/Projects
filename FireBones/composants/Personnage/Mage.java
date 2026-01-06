@@ -1,3 +1,4 @@
+package composants.Personnage;
 public class Mage extends Magicien {
 
     public Mage() {
@@ -6,6 +7,10 @@ public class Mage extends Magicien {
 
     public Mage(String firstname, String lastname, int PV, int PM, int attaque, int defense, String Arme) {
         super(firstname, lastname, PV, PM, attaque, defense, Arme);
+    }
+
+    public static Mage getMage(){
+        return new Mage("Gandalf", "Le Gris", 90, 150, 18, 12, "Bâton");
     }
 
     @Override

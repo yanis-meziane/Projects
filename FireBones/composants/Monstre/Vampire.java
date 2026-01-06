@@ -1,3 +1,4 @@
+package composants.Monstre;
 public class Vampire extends Monstre{
     public Vampire(){
         super();
@@ -7,6 +8,9 @@ public class Vampire extends Monstre{
         super(firstname,lastname,PV,Attaque,Defense,type_elementaire,capacite_special);
     }
 
+    public static Vampire getVampire(){
+        return new Vampire("Vlad","Imir",35,12,12,"Feu","Absorption");
+    }
     @Override
     public String toString() {
         return "Le Vampire s'appelle " + firstname + " " + lastname + "\n" +

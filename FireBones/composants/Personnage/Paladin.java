@@ -1,3 +1,4 @@
+package composants.Personnage;
 public class Paladin extends Combattant {
 
     public Paladin() {
@@ -6,6 +7,10 @@ public class Paladin extends Combattant {
 
     public Paladin(String firstname, String lastname, int PV, int PM, int attaque, int defense, String Arme) {
         super(firstname, lastname, PV, PM, attaque, defense, Arme);
+    }
+
+    public static Paladin getPaladin(){
+        return new Paladin("Luc", "Skywalker", 80, 100, 15, 10, "Mains magiques");
     }
 
     @Override

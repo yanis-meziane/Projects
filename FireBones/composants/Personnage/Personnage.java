@@ -1,3 +1,4 @@
+package composants.Personnage;
 public class Personnage {
 
     protected String firstname;

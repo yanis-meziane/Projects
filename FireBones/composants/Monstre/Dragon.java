@@ -1,3 +1,4 @@
+package composants.Monstre;
 public class Dragon extends Monstre{
     public Dragon(){
         super();
@@ -6,6 +7,10 @@ public class Dragon extends Monstre{
     public Dragon(String firstname, String lastname, int PV, int Attaque, int Defense, String capacite_special, String type_elementaire){
         super(firstname,lastname,PV,Attaque,Defense,capacite_special,type_elementaire);
     };
+
+    public static Dragon getDragon(){
+        return  new Dragon("Smog","Le gardien", 78,27,33,"Feu","Souffle");
+    }
 
     @Override
     public String toString(){

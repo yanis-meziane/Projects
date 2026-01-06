@@ -1,3 +1,4 @@
+package composants.Personnage;
 public class Magicien extends Personnage {
 
     public Magicien() {

@@ -1,3 +1,4 @@
+package composants.Personnage;
 public class Barbare extends Combattant {
 
     public Barbare() {
@@ -6,6 +7,10 @@ public class Barbare extends Combattant {
 
     public Barbare(String firstname, String lastname, int PV, int PM, int attaque, int defense, String Arme) {
         super(firstname, lastname, PV, PM, attaque, defense, Arme);
+    }
+
+    public static Barbare getBarbare(){
+        return new Barbare("Conan", "Le Destructeur", 200, 10, 30, 15, "Hache");
     }
 
     @Override
