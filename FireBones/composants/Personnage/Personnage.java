@@ -1,4 +1,6 @@
 package composants.Personnage;
+package composants.Equipement.Arme;
+package composants.Equipement.Armure;
 public class Personnage {
 
     protected String firstname;
@@ -7,7 +9,8 @@ public class Personnage {
     protected int PM;
     protected int attaque;
     protected int defense;
-    protected String Arme;
+    protected Arme arme;
+    protected  Armure armure;
 
     Personnage() {
         this.firstname = "null";
@@ -16,17 +19,19 @@ public class Personnage {
         this.PM = 0;
         this.attaque = 0;
         this.defense = 0;
-        this.Arme = "null";
+        this.arme = new Arme();
+        this.armure = new Armure();
     }
 
-    Personnage(String firstname, String lastname, int PV, int PM, int attaque, int defense, String Arme) {
+    Personnage(String firstname, String lastname, int PV, int PM, int attaque, int defense, String arme, String Armure) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.PV = PV;
         this.PM = PM;
         this.attaque = attaque;
         this.defense = defense;
-        this.Arme = Arme;
+        this.arme = arme;
+        this.armure = armure;
     }
 
     // SETTERS
@@ -55,8 +60,12 @@ public class Personnage {
         this.defense = defense;
     }
 
-    public void setArme(String Arme) {
-        this.Arme = Arme;
+    public void setArme(Arme arme) {
+        this.arme = arme;
+    }
+
+    public void setArmure(Armure armure) {
+        this.armure = armure;
     }
 
     // GETTERS
@@ -85,15 +94,19 @@ public class Personnage {
         return this.defense;
     }
 
-    public String getArme() {
-        return this.Arme;
+    public Arme getArme() {
+        return this.arme;
     }
 
+    public Armure getArmure() {
+        return armure;
+    }
     @Override
     public String toString() {
         return "Le personnage s'appelle " + firstname + " " + lastname + "\n" +
                 "PV : " + PV + " | PM : " + PM + "\n" +
                 "Attaque : " + attaque + " | Défense : " + defense + "\n" +
-                "Arme : " + Arme;
+                "Arme : " + arme + "\n" +
+                "Armure : " + armure;
     }
 }

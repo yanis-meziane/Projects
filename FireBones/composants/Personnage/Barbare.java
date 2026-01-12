@@ -10,7 +10,7 @@ public class Barbare extends Combattant {
     }
 
     public static Barbare getBarbare(){
-        return new Barbare("Conan", "Le Destructeur", 200, 10, 30, 15, "Hache");
+        return new Barbare("Conan", "Le Destructeur", 70, 15, 12, 7, "Hache");
     }
 
     @Override

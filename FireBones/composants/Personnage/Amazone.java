@@ -4,12 +4,12 @@ public class Amazone extends Combattant {
         super();
     }
 
-    public Amazone(String firstname, String lastname, int PV, int PM, int attaque, int defense, String Arme) {
-        super(firstname, lastname, PV, PM, attaque, defense, Arme);
+    public Amazone(String firstname, String lastname, int PV, int PM, int attaque, int defense, String arme; String armure) {
+        super(firstname, lastname, PV, PM, attaque, defense, arme);
     }
 
     public static Amazone getAmazone(){
-        return new Amazone("Julie", "Harpie", 50, 35, 8, 12, "Arc");
+        return new Amazone("Julie", "Harpie", 50, 35, 8, 12, Arme.getArc(),Armure.getArmureLourde());
     }
 
     @Override
@@ -17,7 +17,8 @@ public class Amazone extends Combattant {
         return "L'Amazone s'appelle " + firstname + " " + lastname + "\n" +
                 "PV : " + PV + " | PM : " + PM + "\n" +
                 "Attaque : " + attaque + " | Défense : " + defense + "\n" +
-                "Arme : " + Arme;
+                "Arme : " + arme + "\n" +
+                "Armure : " + armure;
     }
 
 }
