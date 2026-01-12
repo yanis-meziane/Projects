@@ -1,4 +1,4 @@
-package  composants.Equipements;
+package  composants.Equipement;
 
 public class Armure{
   protected  String name;
@@ -33,22 +33,22 @@ public class Armure{
     @Override
     public String toString() {
         return name + " (Défense: +" + protection + ", Type: " + typeElementaire + ")";
-    }
+    };
 
     // Armures prédéfinies
     public static Armure getArmureLegere() {
         return new Armure("Armure de cuir", 3, "Terre");
-    }
+    };
 
     public static Armure getArmureMoyenne() {
         return new Armure("Cotte de mailles", 6, "Metal");
-    }
+    };
 
     public static Armure getArmureLourde() {
         return new Armure("Armure de plaques", 10, "Feu");
-    }
+    };
 
     public static Armure getRobeMagique() {
         return new Armure("Robe enchantée", 2, "Eau");
-    }
+    };
 }

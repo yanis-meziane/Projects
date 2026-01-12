@@ -1,16 +1,18 @@
 package composants.Personnage;
+import composants.Equipement.Arme;
+import composants.Equipement.Armure;
 public class Barbare extends Combattant {
 
     public Barbare() {
         super();
     }
 
-    public Barbare(String firstname, String lastname, int PV, int PM, int attaque, int defense, String Arme) {
-        super(firstname, lastname, PV, PM, attaque, defense, Arme);
+    public Barbare(String firstname, String lastname, int PV, int PM, int attaque, int defense, String arme, String armure) {
+        super(firstname, lastname, PV, PM, attaque, defense, arme, armure);
     }
 
     public static Barbare getBarbare(){
-        return new Barbare("Conan", "Le Destructeur", 70, 15, 12, 7, "Hache");
+        return new Barbare("Conan", "Le Destructeur", 70, 15, 12, 7, Arme.getEpee(), Armure.getArmureMoyenne());
     }
 
     @Override
@@ -18,6 +20,7 @@ public class Barbare extends Combattant {
         return "Le Barbare s'appelle " + firstname + " " + lastname + "\n" +
                 "PV : " + PV + " | PM : " + PM + "\n" +
                 "Attaque : " + attaque + " | Défense : " + defense + "\n" +
-                "Arme : " + Arme;
+                "Arme : " + arme + "\n" +
+                "Armure : " + armure;
     }
 }

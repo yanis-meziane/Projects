@@ -8,7 +8,7 @@ public class Arme{
     Arme(){
         this.name = "Poing";
         this.damage = 2;
-        this.typeElementaire = "Neutre"
+        this.typeElementaire = "Neutre";
     }
 
     Arme(String name, int damage, String typeElementaire){
@@ -49,7 +49,7 @@ public class Arme{
     // Armes prédéfinies
 
     public static Arme getArc(){
-        return  new Arme("Arc",5,"Bois");
+        return new Arme("Arc",5,"Bois");
     }
 
     public static Arme getEpee(){
@@ -57,15 +57,15 @@ public class Arme{
     }
 
     public static Arme getGrimoire(){
-        return Arme("Grimoire",7,"Eau");
+        return new Arme("Grimoire",7,"Eau");
     }
 
     public static Arme getMarteau(){
-        return  Arme("Marteau",4,"Feu");
+        return new Arme("Marteau",4,"Feu");
     }
 
     public  static Arme getDague(){
-        return Arme("Dague",7,"Terre");
+        return new Arme("Dague",7,"Terre");
     }
 
     @Override

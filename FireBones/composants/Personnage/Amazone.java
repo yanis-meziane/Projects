@@ -4,8 +4,8 @@ public class Amazone extends Combattant {
         super();
     }
 
-    public Amazone(String firstname, String lastname, int PV, int PM, int attaque, int defense, String arme; String armure) {
-        super(firstname, lastname, PV, PM, attaque, defense, arme);
+    public Amazone(String firstname, String lastname, int PV, int PM, int attaque, int defense, String arme, String armure) {
+        super(firstname, lastname, PV, PM, attaque, defense, arme,armure);
     }
 
     public static Amazone getAmazone(){

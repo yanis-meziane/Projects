@@ -1,6 +1,6 @@
 package composants.Personnage;
-package composants.Equipement.Arme;
-package composants.Equipement.Armure;
+import composants.Equipement.Arme;
+import composants.Equipement.Armure;
 public class Personnage {
 
     protected String firstname;
@@ -23,7 +23,7 @@ public class Personnage {
         this.armure = new Armure();
     }
 
-    Personnage(String firstname, String lastname, int PV, int PM, int attaque, int defense, String arme, String Armure) {
+    Personnage(String firstname, String lastname, int PV, int PM, int attaque, int defense, String arme, String armure) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.PV = PV;

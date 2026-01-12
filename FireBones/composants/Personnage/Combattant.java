@@ -5,8 +5,8 @@ public class Combattant extends Personnage{
         super();
     }
 
-    public Combattant(String firstname, String lastname, int PV, int PM, int attaque, int defense, String Arme){
-        super (firstname, lastname, PV, PM, attaque, defense, Arme);
+    public Combattant(String firstname, String lastname, int PV, int PM, int attaque, int defense, String arme, String armure){
+        super (firstname, lastname, PV, PM, attaque, defense, arme, armure);
     }
 
     @Override
@@ -14,6 +14,7 @@ public class Combattant extends Personnage{
         return "Le Combattant s'appelle " + firstname + " " + lastname + "\n" +
                 "PV : " + PV + " | PM : " + PM + "\n" +
                 "Attaque : " + attaque + " | Défense : " + defense + "\n" +
-                "Arme : " + Arme;
+                "Arme : " + arme + "\n" +
+                "Armure :" + armure;
     }
 }
