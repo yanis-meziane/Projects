@@ -39,7 +39,10 @@ public class Main {
                     saisieValide = true;
                     switch(choix) {
                         case 1:
-                            System.out.println("Très bon choix");
+                            System.out.println("Très bon choix ! \n");
+                            System.out.println("L'objectif est le suivant : Je vais te présenter tous les personnages jouables ! Tu pourras en choisir qu'un seul pour toute l'aventure!\n");
+                            System.out.println("une fois ton personnage choisi, tu devras affronter en tout 4 monstres sous le système de tour par tour ! Chaque fois que tu battras un monstre, tu passeras au suivant\n");
+                            System.out.println("Le système de jeu est qu'à chaque tour, tu auras la possibilité de soit Attaquer(A), t'enfuire (E) avec une chance de 2/5 que ça fonctionne, utiliser ta capacité spéciale (CS) ! Chaque action vaut pour un tour et ça passera automatiquement au tour des Monstres ! Bon courage !\n");
                             break;
 
                         case 2:
