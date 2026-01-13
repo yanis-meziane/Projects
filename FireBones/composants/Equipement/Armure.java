@@ -27,7 +27,7 @@ public class Armure{
 
 
     public String getName() {return name;};
-    public int getProtection(){return protection};
+    public int getProtection(){return protection;};
     public String getTypeElementaire() {return typeElementaire;};
 
     @Override

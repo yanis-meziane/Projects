@@ -20,7 +20,7 @@ public class Paladin extends Combattant {
         return "Le Paladin s'appelle " + firstname + " " + lastname + "\n" +
                 "PV : " + PV + " | PM : " + PM + "\n" +
                 "Attaque : " + attaque + " | Défense : " + defense + "\n" +
-                "Arme : " + arme + "\n" + ;
-                "Armure : " + armure
+                "Arme : " + arme + "\n" +
+                "Armure : " + armure;
     }
 }
