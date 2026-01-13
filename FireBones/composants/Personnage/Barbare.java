@@ -7,7 +7,7 @@ public class Barbare extends Combattant {
         super();
     }
 
-    public Barbare(String firstname, String lastname, int PV, int PM, int attaque, int defense, String arme, String armure) {
+    public Barbare(String firstname, String lastname, int PV, int PM, int attaque, int defense, Arme arme, Armure armure) {
         super(firstname, lastname, PV, PM, attaque, defense, arme, armure);
     }
 

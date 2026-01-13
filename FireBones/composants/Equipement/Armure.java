@@ -19,9 +19,9 @@ public class Armure{
 
   // Les Setters
 
-    public void setName(String name){this.name = name};
-    public void setProtection(int protection){this.protection = protection};
-    public void setTypeElementaire(String typeElementaire){this.typeElementaire = typeElementaire};
+    public void setName(String name){ this.name = name; };
+    public void setProtection(int protection){ this.protection = protection; };
+    public void setTypeElementaire(String typeElementaire){ this.typeElementaire = typeElementaire; };
 
     // Les getters
 

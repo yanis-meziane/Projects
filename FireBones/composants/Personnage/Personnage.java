@@ -23,7 +23,7 @@ public class Personnage {
         this.armure = new Armure();
     }
 
-    Personnage(String firstname, String lastname, int PV, int PM, int attaque, int defense, String arme, String armure) {
+    Personnage(String firstname, String lastname, int PV, int PM, int attaque, int defense, Arme arme, Armure armure) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.PV = PV;

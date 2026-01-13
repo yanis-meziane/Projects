@@ -7,7 +7,7 @@ public class Pretre extends Magicien {
         super();
     }
 
-    public Pretre(String firstname, String lastname, int PV, int PM, int attaque, int defense, String arme, String armure) {
+    public Pretre(String firstname, String lastname, int PV, int PM, int attaque, int defense, Arme arme, Armure armure) {
         super(firstname, lastname, PV, PM, attaque, defense, arme, armure);
     }
 

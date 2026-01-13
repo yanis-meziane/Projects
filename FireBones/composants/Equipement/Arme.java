@@ -1,17 +1,17 @@
-package composant.Equipement;
+package composants.Equipement;
 
 public class Arme{
     protected String name;
     protected int damage;
     protected String typeElementaire;
 
-    Arme(){
+    public Arme(){
         this.name = "Poing";
         this.damage = 2;
         this.typeElementaire = "Neutre";
     }
 
-    Arme(String name, int damage, String typeElementaire){
+    public Arme(String name, int damage, String typeElementaire){
         this.name = name;
         this.damage = damage;
         this.typeElementaire = typeElementaire;

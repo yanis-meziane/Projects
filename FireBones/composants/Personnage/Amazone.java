@@ -1,10 +1,12 @@
 package composants.Personnage;
+import composants.Equipement.Arme;
+import composants.Equipement.Armure;
 public class Amazone extends Combattant {
     public Amazone() {
         super();
     }
 
-    public Amazone(String firstname, String lastname, int PV, int PM, int attaque, int defense, String arme, String armure) {
+    public Amazone(String firstname, String lastname, int PV, int PM, int attaque, int defense, Arme arme, Armure armure) {
         super(firstname, lastname, PV, PM, attaque, defense, arme,armure);
     }
 

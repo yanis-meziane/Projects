@@ -1,12 +1,15 @@
 package composants.Personnage;
+import composants.Equipement.Arme;
+import composants.Equipement.Armure;
+
 public class Combattant extends Personnage{
 
     public Combattant(){
         super();
     }
 
-    public Combattant(String firstname, String lastname, int PV, int PM, int attaque, int defense, String arme, String armure){
-        super (firstname, lastname, PV, PM, attaque, defense, arme, armure);
+    public Combattant(String firstname, String lastname, int PV, int PM, int attaque, int defense, Arme arme, Armure armure){
+        super(firstname, lastname, PV, PM, attaque, defense, arme, armure);
     }
 
     @Override
