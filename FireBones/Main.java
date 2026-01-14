@@ -49,7 +49,44 @@ public class Main {
                             Amazone amazone = Amazone.getAmazone();
                             System.out.println("1. " + amazone);
 
-                            break;
+                            Barbare barbare = Barbare.getBarbare();
+                            System.out.println("2. " + barbare);
+
+                            Mage mage = Mage.getMage();
+                            System.out.println("3. " + mage);
+
+                            Paladin paladin = Paladin.getPaladin();
+                            System.out.println("4. " + paladin);
+
+                            Pretre pretre = Pretre.getPretre();
+                            System.out.println("5. " + pretre);
+
+                            while(true) {
+                                System.out.println("Choisissez votre héro (1-5");
+                                try {
+                                    int choixPersonnage = scanner.nextInt();
+                                    scanner.nextLine();
+
+                                    switch (choixPersonnage) {
+                                        case 1:
+                                            System.out.println("Vous avez choisi : " + amazone);
+                                        case 2:
+                                            System.out.println("Vous avez choisi : " + barbare);
+                                        case 3:
+                                            System.out.println("Vous avez choisi : " + mage);
+                                        case 4:
+                                            System.out.println("Vous avez choisi : " + paladin);
+                                        case 5:
+                                            System.out.println("Vous avez choisi : " + pretre);
+                                        default:
+                                            System.out.println("Choisissez un nombre valide entre 1 et 5");
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Erreur de saisie ! Veuillez entrer un nombre.\n");
+                                    scanner.nextLine();
+                                }
+                            }
+                    break;
 
                         case 2:
                             System.out.println("N'hésites pas à venir tenter l'aventure quand le courage sera entre vos mains");
@@ -69,39 +106,7 @@ public class Main {
 
         } while (!saisieValide);
 
-        /*
-        // Les personnages
 
-        // Présentation Amazone
-
-        Amazone amazone = Amazone.getAmazone();
-        System.out.println("\n === AMAZONE === ");
-        System.out.println(amazone);
-
-        // Présentation Barbare
-
-        Barbare barbare = Barbare.getBarbare();
-        System.out.println("\n === BARBARE === ");
-        System.out.println(barbare);
-
-        // Présentation Mage
-
-        Mage mage = Mage.getMage();
-        System.out.println("\n === MAGE === ");
-        System.out.println(mage);
-
-        // Présentation Paladin
-
-        Paladin paladin = Paladin.getPaladin();
-        System.out.println("\n === PALADIN === ");
-        System.out.println(paladin);
-
-        // Présentation Prêtre
-
-        Pretre pretre = Pretre.getPretre();
-        System.out.println("\n === PRETRE === ");
-        System.out.println(pretre);
-*/
         /*
         // Les monstres
 
