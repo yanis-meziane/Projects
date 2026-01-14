@@ -1,282 +1,175 @@
-package composants.Combat;
-
-import composants.Personnage.Personnage;
-import composants.Monstre.Monstre;
+import composants.Personnage.*;
+import composants.Monstre.*;
+import composants.Combat.Combat;
 import java.util.Scanner;
-import java.util.Random;
 
-public class Combat {
-    private Personnage joueur;
-    private Monstre monstre;
-    private Scanner scanner;
-    private Random random;
-    private boolean combatEnCours;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-    public Combat(Personnage joueur, Monstre monstre) {
-        this.joueur = joueur;
-        this.monstre = monstre;
-        this.scanner = new Scanner(System.in);
-        this.random = new Random();
-        this.combatEnCours = true;
-    }
+        System.out.println("===Bienvenue à Firebones===\n");
+        System.out.println("Sur les terres d'Arcus, vous devrez terrasser différents monstres pour libérer les villageois en détresse.\n");
+        System.out.println("Au cours de votre aventure vous combatrez différents monstres de plus en plus dur ! Donc soyez sur vos gardes et bonne chance\n");
 
-    // Méthode principale du combat
-    public boolean demarrerCombat() {
-        System.out.println("===Début du combat===");
-        afficherInfosCombat();
+        // Initialisation du jeu
+        System.out.println("Comment t'appelles-tu ?\n");
+        String firstname = scanner.nextLine();
 
-        while (combatEnCours) {
-            if (!tourJoueur()) {
-                return false;
-            }
-            if (monstre.getPV() <= 0) {
-                victoire();
-                return true;
-            }
+        System.out.println("Bienvenue " + firstname + " dans ces terres sacrées ! Votre objectif est de battre trois monstres qui sont venus envahir nos saintes terres ! Es-tu prêt.e.s à te lancer dans cette formidable aventure ?");
 
-            tourMonstre();
+        int choix = 0;
+        boolean saisieValide = false;
 
-            if (joueur.getPV() <= 0) {
-                defaite();
-                return false;
-            }
+        do {
+            System.out.println("Possibilité : ");
+            System.out.println("1. Oui");
+            System.out.println("2. Non");
+            System.out.println("Veuillez choisir une option :");
 
-            System.out.println("\n" + "=".repeat(50) + "\n");
-        }
+            try {
+                choix = scanner.nextInt();
+                scanner.nextLine();
 
-        return false;
-    }
+                if (choix == 1 || choix == 2) {
+                    saisieValide = true;
 
-    // Tour du joueur
-    private boolean tourJoueur() {
-        System.out.println("=== Votre tour ===");
-        afficherStatusJoueur();
+                    switch(choix) {
+                        case 1:
+                            System.out.println("Très bon choix !\n");
+                            System.out.println("L'objectif est le suivant : Je vais te présenter tous les personnages jouables ! Tu pourras en choisir qu'un seul pour toute l'aventure!\n");
+                            System.out.println("Une fois ton personnage choisi, tu devras affronter en tout 3 monstres sous le système de tour par tour ! Chaque fois que tu battras un monstre, tu passeras au suivant\n");
+                            System.out.println("Le système de jeu est qu'à chaque tour, tu auras la possibilité de soit Attaquer, utiliser ta capacité spéciale, te défendre, te soigner ou fuir ! Chaque action vaut pour un tour et ça passera automatiquement au tour des Monstres ! Bon courage !\n");
 
-        int choix = menuAction();
+                            // Présentation des personnages
+                            Amazone amazone = Amazone.getAmazone();
+                            System.out.println("1. " + amazone + "\n");
 
-        switch (choix) {
-            case 1:
-                attaqueNormale();
-                break;
-            case 2:
-                if (joueur.getPM() >= 20) {
-                    attaqueSpeciale();
+                            Barbare barbare = Barbare.getBarbare();
+                            System.out.println("2. " + barbare + "\n");
+
+                            Mage mage = Mage.getMage();
+                            System.out.println("3. " + mage + "\n");
+
+                            Paladin paladin = Paladin.getPaladin();
+                            System.out.println("4. " + paladin + "\n");
+
+                            Pretre pretre = Pretre.getPretre();
+                            System.out.println("5. " + pretre + "\n");
+
+                            // Choix du personnage
+                            Personnage joueur = null;
+                            boolean personnageChoisi = false;
+
+                            while (!personnageChoisi) {
+                                System.out.println("Choisissez votre héro (1-5)");
+                                try {
+                                    int choixPersonnage = scanner.nextInt();
+                                    scanner.nextLine();
+
+                                    switch (choixPersonnage) {
+                                        case 1:
+                                            joueur = amazone;
+                                            System.out.println("Vous avez choisi : " + amazone.getFirstname());
+                                            personnageChoisi = true;
+                                            break;
+                                        case 2:
+                                            joueur = barbare;
+                                            System.out.println("Vous avez choisi : " + barbare.getFirstname());
+                                            personnageChoisi = true;
+                                            break;
+                                        case 3:
+                                            joueur = mage;
+                                            System.out.println("Vous avez choisi : " + mage.getFirstname());
+                                            personnageChoisi = true;
+                                            break;
+                                        case 4:
+                                            joueur = paladin;
+                                            System.out.println("Vous avez choisi : " + paladin.getFirstname());
+                                            personnageChoisi = true;
+                                            break;
+                                        case 5:
+                                            joueur = pretre;
+                                            System.out.println("Vous avez choisi : " + pretre.getFirstname());
+                                            personnageChoisi = true;
+                                            break;
+                                        default:
+                                            System.out.println("Choisissez un nombre valide entre 1 et 5");
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Erreur de saisie ! Veuillez entrer un nombre.\n");
+                                    scanner.nextLine();
+                                }
+                            }
+
+                            // Début des combats
+                            System.out.println("\n=== Que l'aventure commence ! ===\n");
+
+                            // Combat 1 : Gobelin
+                            System.out.println("\n=== COMBAT 1/3 ===");
+                            Gobelin gobelin = Gobelin.getGobelin();
+                            System.out.println("Un Gobelin apparaît !");
+                            System.out.println(gobelin + "\n");
+
+                            Combat combat1 = new Combat(joueur, gobelin);
+                            boolean victoire1 = combat1.demarrerCombat();
+
+                            if (!victoire1) {
+                                System.out.println("\nFin du jeu...");
+                                scanner.close();
+                                return;
+                            }
+
+                            System.out.println("\nVous récupérez de l'énergie avant le prochain combat !");
+
+                            // Combat 2 : Vampire
+                            System.out.println("\n=== COMBAT 2/3 ===");
+                            Vampire vampire = Vampire.getVampire();
+                            System.out.println("Un Vampire apparaît !");
+                            System.out.println(vampire + "\n");
+
+                            Combat combat2 = new Combat(joueur, vampire);
+                            boolean victoire2 = combat2.demarrerCombat();
+
+                            if (!victoire2) {
+                                System.out.println("\nFin du jeu...");
+                                scanner.close();
+                                return;
+                            }
+
+                            System.out.println("\nPréparez-vous pour le combat final !");
+
+                            // Combat 3 : Dragon
+                            System.out.println("\n=== COMBAT FINAL 3/3 ===");
+                            Dragon dragon = Dragon.getDragon();
+                            System.out.println("Le Dragon apparaît !");
+                            System.out.println(dragon + "\n");
+
+                            Combat combat3 = new Combat(joueur, dragon);
+                            boolean victoire3 = combat3.demarrerCombat();
+
+                            if (victoire3) {
+                                System.out.println("\n FÉLICITATIONS " + firstname + " !");
+                                System.out.println("Vous avez vaincu tous les monstres et libéré les terres d'Arcus !");
+                            } else {
+                                System.out.println("\nLe Dragon était trop puissant... Fin du jeu.");
+                            }
+
+                            break;
+
+                        case 2:
+                            System.out.println("N'hésites pas à venir tenter l'aventure quand le courage sera entre vos mains");
+                            break;
+                    }
                 } else {
-                    System.out.println("Vous n'avez plus assez de mana");
-                    return tourJoueur();
+                    System.out.println("Erreur de saisie ! Mettez 1 ou 2");
                 }
-                break;
-            case 3:
-                defendre();
-                break;
-            case 4:
-                if (joueur.getPM() >= 30) {
-                    soigner();
-                } else {
-                    System.out.println("Vous n'avez pas assez de mana pour vous soigner");
-                    return tourJoueur();
-                }
-                break;
-            case 5:
-                fuir();
-                return false;
-            default:
-                System.out.println("Choix invalide");
-                return tourJoueur();
-        }
+            } catch(Exception e) {
+                System.out.println("Erreur de saisie de valeur. Entrez une valeur valide !");
+                scanner.nextLine();
+            }
 
-        return true;
-    }
+        } while (!saisieValide);
 
-    // Menu des actions
-    private int menuAction() {
-        System.out.println("1. Attaque normale");
-        System.out.println("2. Attaque spéciale (20 PM)");
-        System.out.println("3. Défendre");
-        System.out.println("4. Se soigner (30 PM)");
-        System.out.println("5. Fuir");
-
-        try {
-            return scanner.nextInt();
-        } catch (Exception e) {
-            scanner.nextLine();
-            return 0;
-        }
-    }
-
-    // Attaque normale
-    private void attaqueNormale() {
-        int degats = calculerDegats(joueur.getAttaque(), monstre.getDefense());
-        degats += joueur.getArme().getDamage();
-
-        System.out.println("Le joueur " + joueur.getFirstname() + " attaque " + monstre.getFirstname());
-
-        monstre.setPV(monstre.getPV() - degats);
-        System.out.println("Le monstre perd : " + degats + " PV");
-    }
-
-    // Attaque spéciale
-    private void attaqueSpeciale() {
-        int degats = calculerDegats(joueur.getAttaque(), monstre.getDefense());
-        degats += joueur.getArme().getDamage() * 2;
-
-        System.out.println("Le joueur " + joueur.getFirstname() + " fait une attaque spéciale !");
-        joueur.setPM(joueur.getPM() - 20);
-
-        monstre.setPV(monstre.getPV() - degats);
-        System.out.println("Le monstre perd : " + degats + " PV");
-        System.out.println("Vous perdez 20 PM");
-    }
-
-    // Se défendre
-    private void defendre() {
-        joueur.setDefense(joueur.getDefense() + 5);
-        System.out.println("Durant ce tour, le joueur a +5 de défense et a donc " + joueur.getDefense());
-    }
-
-    // Se soigner
-    private void soigner() {
-        int soin = 30 + (joueur.getPM() / 10);
-        joueur.setPV(Math.min(joueur.getPV() + soin, getMaxPV()));
-        joueur.setPM(joueur.getPM() - 30);
-
-        System.out.println("Vous récupérez " + soin + " PV");
-        System.out.println("Vous perdez 30 PM");
-    }
-
-    // Fuite
-    private void fuir() {
-        if (random.nextInt(100) < 40) {
-            System.out.println("Vous avez réussi à vous enfuir");
-            combatEnCours = false;
-        } else {
-            System.out.println("Vous n'avez pas réussi à fuir :/");
-        }
-    }
-
-    // Tour du monstre
-    private void tourMonstre() {
-        System.out.println("\n=== Tour du monstre ===");
-        afficherStatusMonstre();
-
-        int action = random.nextInt(100);
-        if (action < 60) {
-            attaqueMonstre();
-        } else if (action < 85) {
-            attaqueSpecialeMonstre();
-        } else {
-            defenseMonstre();
-        }
-    }
-
-    // Attaque Monstre
-    private void attaqueMonstre() {
-        int degats = calculerDegats(monstre.getAttaque(), joueur.getDefense());
-        System.out.println(monstre.getFirstname() + " attaque !");
-        joueur.setPV(joueur.getPV() - degats);
-        System.out.println("Vous perdez " + degats + " PV");
-
-        if (joueur.getDefense() > getDefenseBase()) {
-            joueur.setDefense(getDefenseBase());
-        }
-    }
-
-    // Attaque spéciale du monstre
-    private void attaqueSpecialeMonstre() {
-        System.out.println(monstre.getFirstname() + " fait une attaque spéciale !");
-
-        String capacite = monstre.getCapacite_special();
-
-        if (capacite.equals("Souffle")) {
-            int degats = calculerDegats(monstre.getAttaque() * 3, joueur.getDefense());
-            joueur.setPV(Math.max(1, joueur.getPV() - degats));
-            System.out.println("Vous avez été attaqué par le souffle du Dragon ! Dégâts : " + degats);
-        } else if (capacite.equals("Empaler")) {
-            int degats = calculerDegats(monstre.getAttaque() + 10, joueur.getDefense());
-            joueur.setPV(joueur.getPV() - degats);
-            System.out.println("Vous avez été empalé ! Dégâts : " + degats);
-        } else if (capacite.equals("Absorption")) {
-            int degats = calculerDegats(monstre.getAttaque(), joueur.getDefense());
-            joueur.setPV(joueur.getPV() - degats);
-            int soin = (int) (degats * 0.33);
-            monstre.setPV(monstre.getPV() + soin);
-            System.out.println("Le vampire aspire votre énergie vitale ! Dégâts : " + degats + " | Le vampire récupère " + soin + " PV");
-        }
-    }
-
-    // Défense Monstre
-    private void defenseMonstre() {
-        monstre.setDefense(monstre.getDefense() + 3);
-        System.out.println("Le monstre monte temporairement sa défense de +3");
-    }
-
-    // Calculer les dégâts
-    private int calculerDegats(int attaque, int defense) {
-        int degats = attaque - (defense / 2);
-        return Math.max(1, degats);
-    }
-
-    // Afficher les informations du combat
-    private void afficherInfosCombat() {
-        System.out.println("Le combat oppose " + joueur.getFirstname() + " " + joueur.getLastname() + " contre " + monstre.getFirstname() + " " + monstre.getLastname());
-    }
-
-    // Afficher status Monstre
-    private void afficherStatusMonstre() {
-        System.out.println("--- " + monstre.getFirstname() + " ---");
-        System.out.println("PV : " + monstre.getPV());
-        System.out.println("Attaque : " + monstre.getAttaque() + " | Défense : " + monstre.getDefense());
-    }
-
-    // Afficher status Joueur
-    private void afficherStatusJoueur() {
-        System.out.println("--- " + joueur.getFirstname() + " ---");
-        System.out.println("PV : " + joueur.getPV() + " | PM : " + joueur.getPM());
-        System.out.println("Attaque : " + joueur.getAttaque() + " | Défense : " + joueur.getDefense());
-        System.out.println("Arme : " + joueur.getArme().getName());
-        System.out.println("Armure : " + joueur.getArmure().getName());
-    }
-
-    // Victoire
-    private void victoire() {
-        System.out.println("\n🎉 Félicitations vous avez gagné ! 🎉");
-        joueur.setPM(Math.min(joueur.getPM() + 20, getMaxPM()));
-        System.out.println("Vous récupérez 20 PM !");
-    }
-
-    // Défaite
-    private void defaite() {
-        System.out.println("\n💀 Vous avez été vaincu ! 💀");
-    }
-
-    // Obtenir la défense de base
-    private int getDefenseBase() {
-        return joueur.getDefense() - joueur.getArmure().getProtection();
-    }
-
-    // Obtenir les PV max selon le personnage
-    private int getMaxPV() {
-        String classe = joueur.getClass().getSimpleName();
-        switch (classe) {
-            case "Amazone": return 50;
-            case "Barbare": return 70;
-            case "Mage": return 90;
-            case "Paladin": return 80;
-            case "Pretre": return 100;
-            default: return 50;
-        }
-    }
-
-    // Obtenir les PM max selon le personnage
-    private int getMaxPM() {
-        String classe = joueur.getClass().getSimpleName();
-        switch (classe) {
-            case "Amazone": return 35;
-            case "Barbare": return 15;
-            case "Mage": return 150;
-            case "Paladin": return 100;
-            case "Pretre": return 120;
-            default: return 50;
-        }
+        scanner.close();
     }
 }
