@@ -19,8 +19,8 @@ public class Amazone extends Combattant {
         return "L'Amazone s'appelle " + firstname + " " + lastname + "\n" +
                 "PV : " + PV + " | PM : " + PM + "\n" +
                 "Attaque : " + attaque + " | Défense : " + defense + "\n" +
-                "Arme : " + arme + "\n" +
-                "Armure : " + armure;
+                 arme + "\n" +
+                 armure;
     }
 
 }

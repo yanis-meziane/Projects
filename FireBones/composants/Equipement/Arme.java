@@ -71,7 +71,7 @@ public class Arme{
     @Override
     public String toString() {
         return "L'arme que tu as est : " + name + "\n" +
-                "Fait tant : " + damage + " de damage" + "\n" +
+                "Fait " + damage + " de damage" + "\n" +
                  "\n" +
                 "Son type élémentaire est : " + typeElementaire;
     }
