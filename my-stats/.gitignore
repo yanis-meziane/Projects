@@ -27,6 +27,10 @@ yarn-error.log*
 backend/db/MyStats.sql
 backend/db/SQL.md 
 
+# Fichier .env
+
+backend/.env
+
 
 
 node_modules/
