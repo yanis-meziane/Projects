@@ -8,6 +8,9 @@ import ProtectedRoute from './ProtectedRoutes';
 import Error from './Error/Error'; 
 import Trainings from './Trainings/Trainings';
 import Competition from './Competition/Competition';
+import Fauv from './Trainings/Fauv/Fauv';
+import Lutece from './Trainings/Lutece/Lutece';
+import Phoenix from './Trainings/Phoenix/Phoenix';
 
 function App() {
   return (
@@ -16,6 +19,8 @@ function App() {
         <Route path='/' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/error' element={<Error />} /> 
+
+{/* Route pour le rôle 'user' */} 
 
         <Route path='/main' element={
           <ProtectedRoute requiredRole="user">
@@ -34,6 +39,27 @@ function App() {
              <Competition />
           </ProtectedRoute>
         }/>
+
+        <Route path='/trainings/fauv' element={
+          <ProtectedRoute requiredRole="user">
+              <Fauv />
+          </ProtectedRoute>
+        } />
+
+        <Route path='/trainings/lutece' element={
+          <ProtectedRoute requiredRole="user">
+              <Lutece />
+          </ProtectedRoute>
+        } />
+
+        <Route path='/trainings/phoenix' element={
+          <ProtectedRoute requiredRole="user">
+              <Phoenix />
+          </ProtectedRoute>
+        }/>
+
+
+{/* Route pour le rôle 'admin' */}
 
         <Route path='/admin' element={
           <ProtectedRoute requiredRole="admin">
