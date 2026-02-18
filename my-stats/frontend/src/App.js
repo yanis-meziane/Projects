@@ -6,6 +6,9 @@ import Main from './Main/Main';
 import Admin from './Admin/Admin';
 import ProtectedRoute from './ProtectedRoutes';
 import Error from './Error/Error'; 
+import Trainings from './Trainings/Trainings';
+import Competition from './Competition/Competition';
+
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +20,8 @@ function App() {
         <Route path='/main' element={
           <ProtectedRoute requiredRole="user">
             <Main />
+            <Route path='/trainings' element={<Trainings />} />
+            <Route path='/competitions' element={<Competition />} />
           </ProtectedRoute>
         } />
 

@@ -120,13 +120,7 @@ export default function Register() {
 
                 <article>
                     <button type="submit" id="submitRegister">Valider</button>
-                </article>
-                
-                <article>
-                     <input type="checkbox" name="checkbox" id="RGPD" required/> 
-                     <p>Accepter les RGPD <div id="requiredCheckboxRGPD">*</div></p>
-                </article>
-                    
+                </article>        
                 <p>
                     Si vous avez déjà un compte, <Link to="/login">connectez vous</Link>
                 </p>
