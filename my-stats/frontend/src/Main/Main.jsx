@@ -10,13 +10,13 @@ export default function Main(){
             <div id="mainContainer">
                 <section id="container">
                     <article id="trainings">
-                       <button onClick={() => navigate('/Trainings')}>
+                       <button onClick={() => navigate('/trainings')}>
                             Entraînement
                         </button>
                     </article>
 
                     <article id="compet">
-                        <button onClick={()=> navigate('/Competition')}>
+                        <button onClick={()=> navigate('/competition')}>
                             Competition
                         </button>
                     </article>

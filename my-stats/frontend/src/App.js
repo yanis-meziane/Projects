@@ -20,10 +20,20 @@ function App() {
         <Route path='/main' element={
           <ProtectedRoute requiredRole="user">
             <Main />
-            <Route path='/trainings' element={<Trainings />} />
-            <Route path='/competitions' element={<Competition />} />
           </ProtectedRoute>
         } />
+
+        <Route path='/trainings' element={
+          <ProtectedRoute requiredRole="user">
+            <Trainings />
+          </ProtectedRoute>
+        }/>
+
+        <Route path='/competition' element={
+          <ProtectedRoute requiredRole="user">
+             <Competition />
+          </ProtectedRoute>
+        }/>
 
         <Route path='/admin' element={
           <ProtectedRoute requiredRole="admin">
