@@ -31,6 +31,9 @@ backend/db/SQL.md
 
 backend/.env
 
+# Protection de routes 
 
+/ProtectedRoutes.jsx
+frontend/src/Error/
 
 node_modules/
