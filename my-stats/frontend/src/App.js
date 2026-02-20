@@ -11,6 +11,11 @@ import Competition from './Competition/Competition';
 import Fauv from './Trainings/Fauv/Fauv';
 import Lutece from './Trainings/Lutece/Lutece';
 import Phoenix from './Trainings/Phoenix/Phoenix';
+import Beach from './Competition/Beach/Beach';
+import Indoor from './Competition/Indoor/Indoor';
+import Outdoor from './Competition/Outdoor/Outdoor';
+import Tournois from './Competition/Tournois/Tournois';
+import Hat from './Competition/Hat/Hat';
 
 function App() {
   return (
@@ -34,12 +39,6 @@ function App() {
           </ProtectedRoute>
         }/>
 
-        <Route path='/competition' element={
-          <ProtectedRoute requiredRole="user">
-             <Competition />
-          </ProtectedRoute>
-        }/>
-
         <Route path='/trainings/fauv' element={
           <ProtectedRoute requiredRole="user">
               <Fauv />
@@ -57,6 +56,44 @@ function App() {
               <Phoenix />
           </ProtectedRoute>
         }/>
+
+         <Route path='/competition' element={
+          <ProtectedRoute requiredRole="user">
+             <Competition />
+          </ProtectedRoute>
+        }/>
+
+        <Route path='/competition/beach' element={
+          <ProtectedRoute requiredRole="user">
+              <Beach />
+          </ProtectedRoute>
+        }/>
+
+        <Route path='/competition/indoor' element={
+          <ProtectedRoute requiredRole="user">
+            <Indoor />
+          </ProtectedRoute>
+        } />
+
+        <Route path='/competition/outdoor' element={
+          <ProtectedRoute requiredRole="user">
+            <Outdoor />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/competition/tournois" element={
+          <ProtectedRoute requiredRole="user">
+              <Tournois />
+          </ProtectedRoute>
+        } />
+
+
+        <Route path='/competition/hat' element={
+          <ProtectedRoute requiredRole="user">
+            <Hat />
+          </ProtectedRoute>
+        } />
+
 
 
 {/* Route pour le rôle 'admin' */}
