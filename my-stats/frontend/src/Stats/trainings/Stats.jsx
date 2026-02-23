@@ -32,7 +32,6 @@ export default function Stats() {
           <thead>
             <tr>
               <th>Club</th>
-              <th>Sessions</th>
               <th>Total goals</th>
               <th>Moyenne par semaine</th>
             </tr>
@@ -41,7 +40,6 @@ export default function Stats() {
             {stats.map((row, index) => (
               <tr key={index}>
                 <td>{row.club_name}</td>
-                <td>{row.sessions}</td>
                 <td>{row.total_goals}</td>
                 <td>{row.moyenne_par_semaine}</td>
               </tr>

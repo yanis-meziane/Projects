@@ -16,7 +16,7 @@ import Indoor from './Competition/Indoor/Indoor';
 import Outdoor from './Competition/Outdoor/Outdoor';
 import Tournois from './Competition/Tournois/Tournois';
 import Hat from './Competition/Hat/Hat';
-import Stats from './Stats/Stats';
+import Stats from './Stats/trainings/Stats';
 
 function App() {
   return (

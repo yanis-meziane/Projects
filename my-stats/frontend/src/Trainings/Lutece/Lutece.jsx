@@ -10,7 +10,7 @@ export default function Lutece() {
       .then(res => res.json())
       .then(data => {
         console.log('Clubs reçus :', data);
-        const lutece = data.clubs.find(club => club.club_name === 'Lutece');
+        const lutece = data.clubs.find(club => club.club_name === 'Lutèce');
         setClubId(lutece.club_id);
       });
   }, []);
