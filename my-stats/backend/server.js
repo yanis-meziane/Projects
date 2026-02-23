@@ -124,6 +124,70 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+
+// API Clubs 
+
+app.get('/api/clubs', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT club_id, club_name, city FROM clubs');
+    res.status(200).json({ success: true, clubs: result.rows });
+  } catch (error) {
+    console.error('Erreur récupération clubs:', error);
+    res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
+});
+
+// API pour enregistrer les notes dans un entraînement
+
+
+app.post('/api/trainings', async (req, res) => {
+  const {userId, clubId, date, goals } = req.body;
+
+  if (!userId || !clubId || !date) {
+    return res.status(400).json({ success: false, message: 'Champs obligatoires manquants' });
+  }
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO trainings (user_id, club_id, date, goals)
+       VALUES ($1, $2, $3, $4)
+       RETURNING *`,
+      [userId, clubId, date, goals || 0]
+    );
+
+    res.status(201).json({ success: true, training: result.rows[0] });
+  } catch (error) {
+    console.error('Erreur ajout entraînement:', error);
+    res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
+});
+
+// API pour les stats 
+
+app.get('/api/stats/:userId', async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const result = await pool.query(`
+      SELECT 
+        c.club_name,
+        COUNT(t.training_id) AS sessions,
+        SUM(t.goals) AS total_goals,
+        ROUND(SUM(t.goals)::decimal / 52, 2) AS moyenne_par_semaine
+      FROM trainings t
+      JOIN clubs c ON t.club_id = c.club_id
+      WHERE t.user_id = $1
+      GROUP BY c.club_name
+      ORDER BY c.club_name
+    `, [userId]);
+
+    res.status(200).json({ success: true, stats: result.rows });
+  } catch (error) {
+    console.error('Erreur récupération stats:', error);
+    res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur le port ${PORT}`);
 });
