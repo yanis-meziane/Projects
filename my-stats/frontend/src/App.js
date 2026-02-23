@@ -1,22 +1,35 @@
+
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+//Import pour la partie Inscription/Connexion
 import Register from "./Register/Register";
 import Login from "./Login/login";
+
+// Page Admin/User
 import Main from './Main/Main';
 import Admin from './Admin/Admin';
+
+//Gestion d'erreur
 import ProtectedRoute from './ProtectedRoutes';
 import Error from './Error/Error'; 
+
+//Gestion d'entraînement
 import Trainings from './Trainings/Trainings';
-import Competition from './Competition/Competition';
 import Fauv from './Trainings/Fauv/Fauv';
 import Lutece from './Trainings/Lutece/Lutece';
 import Phoenix from './Trainings/Phoenix/Phoenix';
+
+//Gestion Competition
+import Competition from './Competition/Competition';
 import Beach from './Competition/Beach/Beach';
 import Indoor from './Competition/Indoor/Indoor';
 import Outdoor from './Competition/Outdoor/Outdoor';
 import Tournois from './Competition/Tournois/Tournois';
 import Hat from './Competition/Hat/Hat';
-import Stats from './Stats/trainings/Stats';
+
+//Gestion stats
+import Stats from './Stats/Stats';
 
 function App() {
   return (

@@ -52,7 +52,7 @@ export default function Register() {
 
     return (
         <div>
-            <main id="mainRegister">
+            <main id="containerRegister">
                 <form onSubmit={handleSubmit} id="formRegister">
 
                     <article>
@@ -122,7 +122,7 @@ export default function Register() {
                     <button type="submit" id="submitRegister">Valider</button>
                 </article>        
                 <p>
-                    Si vous avez déjà un compte, <Link to="/login">connectez vous</Link>
+                    Si vous avez déjà un compte, <Link to="/login" id="LinkRegister">connectez vous</Link>
                 </p>
 
             </form>

@@ -1,0 +1,45 @@
+
+
+#containerLogin{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #B8EAE0;
+}
+
+#formLogin {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: fit-content;
+    border: 2px solid black;
+    padding: 20px;
+    gap: 10px;
+    align-items: center;
+    border-radius: 3vh;
+    box-shadow: 5px 5px 10px gray;
+    background-color: #F3FBF9;
+}
+
+#buttonLogin{
+   background-color: #12A594;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#buttonLogin:hover{
+    background-color: gray;
+    color: black;
+    transform: translateY(-2px);
+}
+
+#LinkLogin{
+    text-decoration: none;
+    cursor: pointer;
+}

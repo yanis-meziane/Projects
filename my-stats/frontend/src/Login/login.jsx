@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "./Login.css"
 
 export default function Login() {
     const [formData, setFormData] = useState({
@@ -59,10 +60,8 @@ export default function Login() {
         }
     };
     return(
-        <div>
-            <h1> Je suis la page Login </h1>
-
-            <form onSubmit={handleSubmit}>
+        <div id="containerLogin">
+            <form onSubmit={handleSubmit} id="formLogin">
                 <label htmlFor="Email"> Mail : </label>
                 <input type="email" name="email" id="emailLogin" placeholder="Votre mail..." minLength={1} maxLength={30} value={formData.email} onChange={handleChange} required />
 
@@ -78,12 +77,12 @@ export default function Login() {
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {success && <p style={{ color: 'green' }}>{success}</p>}
 
-                <button type="submit">Valider</button>
-            </form>
+                <button type="submit" id="buttonLogin">Valider</button>
 
-            <p>
-                Si tu n'as pas encore de compte, <Link to={'/'}> crées toi ton compte</Link>
-            </p>
+                <p>
+                    Si tu n'as pas encore de compte, <Link to={'/'} id="LinkLogin"> crées toi ton compte</Link>
+                </p>
+            </form>
         </div>
     )
 }

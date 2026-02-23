@@ -21,7 +21,7 @@ export default function Stats() {
 
   return (
     <div>
-      <h1>Mes statistiques</h1>
+      <h1>Mes statistiques - Entraînement</h1>
 
       {message && <p>{message}</p>}
 
