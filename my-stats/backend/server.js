@@ -168,18 +168,13 @@ app.get('/api/stats/:userId', async (req, res) => {
   const { userId } = req.params;
 
   try {
-    const result = await pool.query(`
-      SELECT 
-        c.club_name,
-        COUNT(t.training_id) AS sessions,
-        SUM(t.goals) AS total_goals,
-        ROUND(SUM(t.goals)::decimal / 52, 2) AS moyenne_par_semaine
-      FROM trainings t
-      JOIN clubs c ON t.club_id = c.club_id
-      WHERE t.user_id = $1
-      GROUP BY c.club_name
-      ORDER BY c.club_name
-    `, [userId]);
+   const result = await pool.query(`
+  SELECT club_name, year, nb_sessions, total_goals, moyenne_par_semaine
+  FROM stats_training_per_club
+  WHERE club_name IN (
+    SELECT club_name FROM clubs WHERE user_id = $1
+  )
+`, [userId]);
 
     res.status(200).json({ success: true, stats: result.rows });
   } catch (error) {
