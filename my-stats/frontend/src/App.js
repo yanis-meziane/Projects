@@ -16,6 +16,7 @@ import Indoor from './Competition/Indoor/Indoor';
 import Outdoor from './Competition/Outdoor/Outdoor';
 import Tournois from './Competition/Tournois/Tournois';
 import Hat from './Competition/Hat/Hat';
+import Stats from './Stats/Stats';
 
 function App() {
   return (
@@ -91,6 +92,12 @@ function App() {
         <Route path='/competition/hat' element={
           <ProtectedRoute requiredRole="user">
             <Hat />
+          </ProtectedRoute>
+        } />
+
+        <Route path='/stats' element={
+          <ProtectedRoute requiredRole="user">
+            <Stats />
           </ProtectedRoute>
         } />
 

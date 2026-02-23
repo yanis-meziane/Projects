@@ -20,6 +20,11 @@ export default function Main(){
                             Competition
                         </button>
                     </article>
+                    
+                    <article id="stats">
+                       <button onClick={() => navigate('/stats')}>Mes stats</button>
+                    </article>
+
                 </section>
             </div>
         </div>
