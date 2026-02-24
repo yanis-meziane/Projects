@@ -11,5 +11,16 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+    gap : 20px;
 }
+
+.buttonMain{
+    height: 10vh;
+    width: 50vh;
+    background-color: antiquewhite;
+    border-radius: 2vh;
+    border: none;
+}
+
+
 

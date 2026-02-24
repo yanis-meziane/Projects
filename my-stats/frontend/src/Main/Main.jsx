@@ -8,19 +8,19 @@ export default function Main(){
         <div id="mainContainer">
                 <section id="container">
                     <article id="trainings">
-                       <button onClick={() => navigate('/trainings')}>
+                       <button onClick={() => navigate('/trainings')} className="buttonMain">
                             Entraînement
                         </button>
                     </article>
 
                     <article id="compet">
-                        <button onClick={()=> navigate('/competition')}>
+                        <button onClick={()=> navigate('/competition')} className="buttonMain">
                             Competition
                         </button>
                     </article>
                     
                     <article id="stats">
-                       <button onClick={() => navigate('/stats')}>Mes stats</button>
+                       <button onClick={() => navigate('/stats')} className="buttonMain">Mes stats</button>
                     </article>
 
                 </section>

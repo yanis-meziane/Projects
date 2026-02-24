@@ -62,22 +62,25 @@ export default function Login() {
     return(
         <div id="containerLogin">
             <form onSubmit={handleSubmit} id="formLogin">
-                <label htmlFor="Email"> Mail : </label>
-                <input type="email" name="email" id="emailLogin" placeholder="Votre mail..." minLength={1} maxLength={30} value={formData.email} onChange={handleChange} required />
 
+                <span className="input-span">
+                    <label htmlFor="Email"> Mail : </label>
+                    <input type="email" name="email" id="emailLogin" placeholder="Votre mail..." minLength={1} maxLength={30} value={formData.email} onChange={handleChange} required />
+                </span>
             <br />
             <br />
 
+            <span className="input-span">
                 <label htmlFor="password">Mot de passe : </label>
                 <input type="password" name="password" id="password" placeholder="Votre mot de passe..." value={formData.password} onChange={handleChange} required />
-                
+            </span>
                 <br />
                 <br />
 
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {success && <p style={{ color: 'green' }}>{success}</p>}
 
-                <button type="submit" id="buttonLogin">Valider</button>
+                <input className="submit" type="submit" defaultValue="Valider" />
 
                 <p>
                     Si tu n'as pas encore de compte, <Link to={'/'} id="LinkLogin"> crées toi ton compte</Link>
