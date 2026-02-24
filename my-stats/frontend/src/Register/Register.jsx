@@ -51,83 +51,79 @@ export default function Register() {
     };
 
     return (
-        <div>
-            <main id="containerRegister">
-                <form onSubmit={handleSubmit} id="formRegister">
+        <div id="containerRegister">
+            <form onSubmit={handleSubmit} id="formRegister">
 
-                    <article>
-                        <label htmlFor="firstname">Prénom : </label>
-                            <input
-                                type="text"
-                                name="firstname"
-                                id="firstname"
-                                placeholder="Votre prénom..."
-                                minLength={1}
-                                maxLength={30}
-                                value={formData.firstname}
-                                onChange={handleChange}
-                                required
-                            />
-                    </article>
-                        
-                    <article>
-                         <label htmlFor="lastname">Nom de famille : </label>
-                            <input
-                                type="text"
-                                name="lastname"
-                                id="lastname"
-                                placeholder="Votre nom de famille..."
-                                minLength={1}
-                                maxLength={30}
-                                value={formData.lastname}
-                                onChange={handleChange}
-                                required
-                            />
-                    </article>
+                <span className="input-span">
+                    <label htmlFor="firstname">Prénom :</label>
+                    <input
+                        type="text"
+                        name="firstname"
+                        id="firstname"
+                        placeholder="Votre prénom..."
+                        minLength={1}
+                        maxLength={30}
+                        value={formData.firstname}
+                        onChange={handleChange}
+                        required
+                    />
+                </span>
 
-                        <article>
-                            <label htmlFor="email">Mail : </label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    placeholder="Votre mail..."
-                                    minLength={1}
-                                    maxLength={30}
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    required
-                                />
-                        </article>
+                <span className="input-span">
+                    <label htmlFor="lastname">Nom de famille :</label>
+                    <input
+                        type="text"
+                        name="lastname"
+                        id="lastname"
+                        placeholder="Votre nom de famille..."
+                        minLength={1}
+                        maxLength={30}
+                        value={formData.lastname}
+                        onChange={handleChange}
+                        required
+                    />
+                </span>
 
-                    <article>
-                        <label htmlFor="password">Mot de passe : </label>
-                            <input
-                                type="password"
-                                name="password"
-                                id="password"
-                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$"
-                                title="Doit contenir au minimum 8 caractères avec 1 majuscule, une minuscule, un caractère spécial et un chiffre"
-                                placeholder="Votre mot de passe..."
-                                value={formData.password}
-                                onChange={handleChange}
-                                required
-                            />
-                    </article>
-                
+                <span className="input-span">
+                    <label htmlFor="email">Mail :</label>
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Votre mail..."
+                        minLength={1}
+                        maxLength={30}
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                    />
+                </span>
+
+                <span className="input-span">
+                    <label htmlFor="password">Mot de passe :</label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$"
+                        title="Doit contenir au minimum 12 caractères avec 1 majuscule, une minuscule, un caractère spécial et un chiffre"
+                        placeholder="Votre mot de passe..."
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                    />
+                </span>
+
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {success && <p style={{ color: 'green' }}>{success}</p>}
 
-                <article>
-                    <button type="submit" id="submitRegister">Valider</button>
-                </article>        
+                <input className="submit" type="submit" defaultValue="Valider" />
+
                 <p>
                     Si vous avez déjà un compte, <Link to="/login" id="LinkRegister">connectez vous</Link>
                 </p>
 
             </form>
-        
-            </main>
-           </div> 
+        </div>
     );
 }
