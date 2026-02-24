@@ -1,13 +1,11 @@
 import { useNavigate } from "react-router-dom"
+import "./Main.css"
 
 export default function Main(){
 
     const navigate = useNavigate();
     return(
-        <div>
-           
-
-            <div id="mainContainer">
+        <div id="mainContainer">
                 <section id="container">
                     <article id="trainings">
                        <button onClick={() => navigate('/trainings')}>
@@ -26,7 +24,6 @@ export default function Main(){
                     </article>
 
                 </section>
-            </div>
         </div>
     )
 }
