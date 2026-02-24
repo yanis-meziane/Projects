@@ -1,26 +1,60 @@
-#mainContainer{
+#mainContainer {
     display: flex;
-    height: 100vh;
-    width: 100%;
-    margin: 5vh;
-}
-
-#container{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
     align-items: center;
     justify-content: center;
-    gap : 20px;
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    --s: 200px;
+    --c1: #1d1d1d;
+    --c2: #4e4f51;
+    --c3: #3c3c3c;
+
+    background: repeating-conic-gradient(
+        from 30deg,
+        #0000 0 120deg,
+        var(--c3) 0 180deg
+      )
+      calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+    repeating-conic-gradient(
+      from 30deg,
+      var(--c1) 0 60deg,
+      var(--c2) 0 120deg,
+      var(--c3) 0 180deg
+    );
+    background-size: var(--s) calc(var(--s) * 0.577);
 }
 
-.buttonMain{
-    height: 10vh;
-    width: 50vh;
-    background-color: antiquewhite;
-    border-radius: 2vh;
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 50%;
+    max-width: 480px;
+    min-width: 280px;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(6px);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.buttonMain {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: whitesmoke;
+    color: #1d1d1d;
     border: none;
+    border-radius: 3rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 300ms;
 }
 
-
-
+.buttonMain:hover {
+    background-color: #4e4f51;
+    color: white;
+    transform: translateY(-2px);
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./Stats.css"
 
 export default function Stats() {
   const [stats, setStats] = useState([]);
@@ -20,33 +21,35 @@ export default function Stats() {
   }, []);
 
   return (
-    <div>
-      <h1>Mes statistiques - Entraînement</h1>
+    <div id="statsContainer">
+      <div className="statsCard">
+        <h1>Mes statistiques — Entraînement</h1>
 
-      {message && <p>{message}</p>}
+        {message && <p>{message}</p>}
 
-      {stats.length === 0 ? (
-        <p>Aucune donnée disponible</p>
-      ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Club</th>
-              <th>Total goals</th>
-              <th>Moyenne par semaine</th>
-            </tr>
-          </thead>
-          <tbody>
-            {stats.map((row, index) => (
-              <tr key={index}>
-                <td>{row.club_name}</td>
-                <td>{row.total_goals}</td>
-                <td>{row.moyenne_par_semaine}</td>
+        {stats.length === 0 ? (
+          <p>Aucune donnée disponible</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Club</th>
+                <th>Total goals</th>
+                <th>Moyenne par semaine</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+            </thead>
+            <tbody>
+              {stats.map((row, index) => (
+                <tr key={index}>
+                  <td>{row.club_name}</td>
+                  <td>{row.total_goals}</td>
+                  <td>{row.moyenne_par_semaine}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./Fauv.css"
 
 export default function Fauv() {
   const [clubId, setClubId] = useState(null);
@@ -44,19 +45,26 @@ export default function Fauv() {
   };
 
   return (
-    <div>
-      <h1>Fauv — Ajouter un entraînement</h1>
+    <div id="fauvContainer">
+    
+      <form onSubmit={handleSubmit} className="fauvForm">
 
-      <form onSubmit={handleSubmit}>
-        <label>Date :
-          <input type="date" name="date" value={formData.date} onChange={handleChange} required />
+        <h1>Fauv — Ajouter un entraînement</h1>
+        <article className="fauvArticle">
+            <label>Date :
+              <input type="date" name="date" value={formData.date} onChange={handleChange} required />
+            </label>
+        </article>
+
+      <article className="fauvArticle">
+          <label>Goals :
+            <input type="number" name="goals" min="0" value={formData.goals} onChange={handleChange} />
         </label>
+      </article>
 
-        <label>Goals :
-          <input type="number" name="goals" min="0" value={formData.goals} onChange={handleChange} />
-        </label>
-
-        <button type="submit">Enregistrer</button>
+      <article className="fauvArticle">
+         <input id="submit" type="submit" defaultValue="Valider" />
+      </article>
       </form>
 
       {message && <p>{message}</p>}
