@@ -124,7 +124,6 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-
 // API Clubs 
 
 app.get('/api/clubs', async (req, res) => {
@@ -137,8 +136,7 @@ app.get('/api/clubs', async (req, res) => {
   }
 });
 
-// API pour enregistrer les notes dans un entraînement
-
+// API Trainings
 
 app.post('/api/trainings', async (req, res) => {
   const {userId, clubId, date, goals } = req.body;
@@ -162,23 +160,205 @@ app.post('/api/trainings', async (req, res) => {
   }
 });
 
-// API pour les stats 
+// API Competitions (Tournois)
 
-app.get('/api/stats/:userId', async (req, res) => {
+app.post('/api/competitions', async (req, res) => {
+  const { userId, name, location, date, nb_matchs, goals, wins, losses, final_ranking } = req.body;
+
+  if (!userId || !name || !date) {
+    return res.status(400).json({ success: false, message: 'Champs obligatoires manquants' });
+  }
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO tournois (user_id, name, location, date, nb_matchs, goals, wins, losses, final_ranking)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       RETURNING *`,
+      [userId, name, location, date, nb_matchs || 0, goals || 0, wins || 0, losses || 0, final_ranking || null]
+    );
+
+    res.status(201).json({ success: true, competition: result.rows[0] });
+  } catch (error) {
+    console.error('Erreur ajout compétition:', error);
+    res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
+});
+
+// API Hat
+
+
+app.post('/api/hat', async (req, res) => {
+  const { userId, name, location, date, nb_matchs, goals, wins, losses, final_ranking } = req.body;
+
+  if (!userId || !name || !date) {
+    return res.status(400).json({ success: false, message: 'Champs obligatoires manquants' });
+  }
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO hats (user_id, name, location, date, nb_matchs, goals, wins, losses, final_ranking)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       RETURNING *`,
+      [userId, name, location, date, nb_matchs || 0, goals || 0, wins || 0, losses || 0, final_ranking || null]
+    );
+
+    res.status(201).json({ success: true, hat: result.rows[0] });
+  } catch (error) {
+    console.error('Erreur ajout hat:', error);
+    res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
+});
+
+// API Indoor (championnat)
+
+app.post('/api/indoor', async (req, res) => {
+  const { userId, name, location, date, nb_matchs, goals, wins, losses, final_ranking } = req.body;
+
+  if (!userId || !name || !date) {
+    return res.status(400).json({ success: false, message: 'Champs obligatoires manquants' });
+  }
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO championnat (user_id, name, location, date, nb_matchs, goals, wins, losses, final_ranking)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       RETURNING *`,
+      [userId, name, location, date, nb_matchs || 0, goals || 0, wins || 0, losses || 0, final_ranking || null]
+    );
+
+    res.status(201).json({ success: true, indoor: result.rows[0] });
+  } catch (error) {
+    console.error('Erreur ajout indoor:', error);
+    res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
+});
+
+// API Outdoor
+
+app.post('/api/outdoor', async (req, res) => {
+  const { userId, name, location, date, nb_matchs, goals, wins, losses, final_ranking } = req.body;
+
+  if (!userId || !name || !date) {
+    return res.status(400).json({ success: false, message: 'Champs obligatoires manquants' });
+  }
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO championnat (user_id, name, location, date, nb_matchs, goals, wins, losses, final_ranking)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       RETURNING *`,
+      [userId, name, location, date, nb_matchs || 0, goals || 0, wins || 0, losses || 0, final_ranking || null]
+    );
+
+    res.status(201).json({ success: true, outdoor: result.rows[0] });
+  } catch (error) {
+    console.error('Erreur ajout outdoor:', error);
+    res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
+});
+
+// API Stats - Entraînements
+
+app.get('/api/stats/training/:userId', async (req, res) => {
   const { userId } = req.params;
 
   try {
-   const result = await pool.query(`
-  SELECT club_name, year, nb_sessions, total_goals, moyenne_par_semaine
-  FROM stats_training_per_club
-  WHERE club_name IN (
-    SELECT club_name FROM clubs WHERE user_id = $1
-  )
-`, [userId]);
+    const result = await pool.query(`
+      SELECT club_name, year, nb_sessions, total_goals, moyenne_par_semaine
+      FROM stats_training_per_club
+      WHERE club_name IN (
+        SELECT club_name FROM clubs WHERE user_id = $1
+      )
+    `, [userId]);
 
     res.status(200).json({ success: true, stats: result.rows });
   } catch (error) {
-    console.error('Erreur récupération stats:', error);
+    console.error('Erreur récupération stats entraînement:', error);
+    res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
+});
+
+// API Stats - Tournois (competitions)
+
+app.get('/api/stats/tournaments/:userId', async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const result = await pool.query(`
+      SELECT name AS tournament_name, location, year AS annee,
+             nb_matchs, goals, wins, losses, final_ranking
+      FROM tournois
+      WHERE user_id = $1
+      ORDER BY year DESC, name
+    `, [userId]);
+
+    res.status(200).json({ success: true, stats: result.rows });
+  } catch (error) {
+    console.error('Erreur récupération stats tournois:', error);
+    res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
+});
+
+// API Stats - Hat
+
+app.get('/api/stats/hats/:userId', async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const result = await pool.query(`
+      SELECT name AS tournament_name, location, year AS annee,
+             nb_matchs, goals, wins, losses, final_ranking
+      FROM hats
+      WHERE user_id = $1
+      ORDER BY year DESC, name
+    `, [userId]);
+
+    res.status(200).json({ success: true, stats: result.rows });
+  } catch (error) {
+    console.error('Erreur récupération stats hat:', error);
+    res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
+});
+
+// API Stats - Indoor (championnat)
+
+app.get('/api/stats/indoor/:userId', async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const result = await pool.query(`
+      SELECT name AS tournament_name, location, year AS annee,
+             nb_matchs, goals, wins, losses, final_ranking
+      FROM championnat
+      WHERE user_id = $1
+      ORDER BY year DESC, name
+    `, [userId]);
+
+    res.status(200).json({ success: true, stats: result.rows });
+  } catch (error) {
+    console.error('Erreur récupération stats indoor:', error);
+    res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
+});
+
+// API Stats - Outdoor
+
+
+app.get('/api/stats/outdoor/:userId', async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const result = await pool.query(`
+      SELECT name AS tournament_name, location, year AS annee,
+             nb_matchs, goals, wins, losses, final_ranking
+      FROM championnat
+      WHERE user_id = $1
+      ORDER BY year DESC, name
+    `, [userId]);
+
+    res.status(200).json({ success: true, stats: result.rows });
+  } catch (error) {
+    console.error('Erreur récupération stats outdoor:', error);
     res.status(500).json({ success: false, message: 'Erreur serveur' });
   }
 });
