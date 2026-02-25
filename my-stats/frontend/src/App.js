@@ -22,7 +22,6 @@ import Phoenix from './Trainings/Phoenix/Phoenix';
 
 //Gestion Competition
 import Competition from './Competition/Competition';
-import Beach from './Competition/Beach/Beach';
 import Indoor from './Competition/Indoor/Indoor';
 import Outdoor from './Competition/Outdoor/Outdoor';
 import Tournois from './Competition/Tournois/Tournois';
@@ -77,12 +76,7 @@ function App() {
           </ProtectedRoute>
         }/>
 
-        <Route path='/competition/beach' element={
-          <ProtectedRoute requiredRole="user">
-              <Beach />
-          </ProtectedRoute>
-        }/>
-
+        
         <Route path='/competition/indoor' element={
           <ProtectedRoute requiredRole="user">
             <Indoor />
