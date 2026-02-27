@@ -1,12 +1,19 @@
 import { useNavigate } from "react-router-dom"
 import "./Main.css"
+import HamburgerMenu from "../HamburgerMenu/HamburgerMenu"
 
 export default function Main(){
+
+     const firstname = localStorage.getItem("firstname");
 
     const navigate = useNavigate();
     return(
         <div id="mainContainer">
-                <section id="container">
+            <HamburgerMenu />
+                <section id="container">                    
+                     {firstname && (
+                        <p className="userGreeting">Bonjour, {firstname}</p>
+                    )}
                     <article id="trainings">
                        <button onClick={() => navigate('/trainings')} className="buttonMain">
                             Entraînement
