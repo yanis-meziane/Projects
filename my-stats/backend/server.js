@@ -141,7 +141,7 @@ app.post('/api/login', async (req, res) => {
 app.post('/api/addClub', async(req,res)=>{
   const {userId,clubName,city} = req.body;
 
-  if ( !clubName || !city) {
+  if (!userId || !clubName || !city) {
     return res.status(400).json({ success: false, message: 'Champs obligatoires manquants' });
   }
 

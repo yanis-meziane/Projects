@@ -4,9 +4,8 @@ import "./addClub.css"
 
 export default function AddClub() {
     const [formData, setFormData] = useState({
-        club_name: '',
-        city: '',
-        user_id: ''
+        clubName: '',
+        city: ''
     });
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -25,24 +24,22 @@ export default function AddClub() {
         setError('');
         setSuccess('');
 
+        const userId = localStorage.getItem('userId');
+
         try {
             const response = await fetch('http://localhost:3001/api/addClub', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...formData, userId })
             });
 
             const data = await response.json();
 
             if (data.success) {
                 setSuccess('Ajout du club réussi ! Redirection...');
-                setTimeout(() => {
-                    navigate('/trainings');
-                }, 1000);
+                setTimeout(() => navigate('/trainings'), 1000);
             } else {
-                setError(data.message || 'Erreur lors de l\'ajout du club');
+                setError(data.message || "Erreur lors de l'ajout du club");
             }
         } catch (error) {
             console.error('Erreur:', error);
@@ -53,9 +50,8 @@ export default function AddClub() {
     return (
         <div id="containerAdd">
             <form onSubmit={handleSubmit} id="formAdd">
-
                 <span className="input-span">
-                    <label htmlFor="firstname">Nom du club :</label>
+                    <label htmlFor="clubName">Nom du club :</label>
                     <input
                         type="text"
                         name="clubName"
@@ -63,14 +59,14 @@ export default function AddClub() {
                         placeholder="Nom du club"
                         minLength={1}
                         maxLength={30}
-                        value={formData.firstname}
+                        value={formData.clubName}
                         onChange={handleChange}
                         required
                     />
                 </span>
 
                 <span className="input-span">
-                    <label htmlFor="lastname">Lieu :</label>
+                    <label htmlFor="city">Lieu :</label>
                     <input
                         type="text"
                         name="city"
@@ -78,7 +74,7 @@ export default function AddClub() {
                         placeholder="Lieu..."
                         minLength={1}
                         maxLength={30}
-                        value={formData.lastname}
+                        value={formData.city}
                         onChange={handleChange}
                         required
                     />
@@ -88,7 +84,6 @@ export default function AddClub() {
                 {success && <p style={{ color: 'green' }}>{success}</p>}
 
                 <input className="submit" type="submit" defaultValue="Valider" />
-
             </form>
         </div>
     );
