@@ -25,7 +25,8 @@ Puis pour avoir la possibilité de modifier le projet en local sur votre machine
 
 
 ```bash
-git remove remote add origin
+git remote add origin <url-du-repo>
+git remote remove origin
 git push origin main
 ```
 
