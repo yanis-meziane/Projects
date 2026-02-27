@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# MyStats 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Présentation 
 
-## Available Scripts
+*MyStats* est un projet personnel visant à faire un suivi des performances sportives en rentrant nos performances. Suite à cela, nous pourrons avoir accès à nos statistiques sur l'ensemble de l'année. 
 
-In the project directory, you can run:
+## Technologies ulitisées 
 
-### `npm start`
+* *Frontend :* React.js (v18.3.1) / npm (v10.8.2)
+* *Backend :* Node.js (v18.20.8)
+* *Base de données :* PostGreSQL
+* *IDE :* VisualStudio Code 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Comment faire marcher le projet ? 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. *Initialisation du projet :* 
 
-### `npm test`
+Ouvrez votre terminal dans votre IDE (e.g : VSCode) et rentrez la commande suivante : 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/yanis-meziane/Projects.git
+```
 
-### `npm run build`
+Puis pour avoir la possibilité de modifier le projet en local sur votre machine, faites : 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git remove remote add origin
+git push origin main
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. *Installation des dépendances et récupération de la base de données :*
 
-### `npm run eject`
+Afin d'installer les dépendances et la base de données pour que le projet puisse fonctionner correctement, faites : 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+cd my-stats # Pour vérifier d'avoir tous les documents
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. *Lancement du projet*
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Dans un premier temps, dans le dossier ```./backend```vous retrouver le fichier ```.env.example```afin de créer la connection avec votre base de données. Le fichier devrait ressembler à ça : 
 
-## Learn More
+```
+DB_USER= <votre_db_username>
+DB_HOST=127.0.0.1
+DB_NAME=MyStats
+DB_PASSWORD=<Votre_mot_de_passe>
+DB_PORT=5432
+PORT=3001
+FRONTEND_URL=http://localhost:3000
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Ainsi vous mettez vos informations personnelles et vous devriez avoir la possibilité de connecter le projet avec la Base de données.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+--- 
 
-### Code Splitting
+Une fois cela effectuée, vous ouvrez un second terminal pour faire ces commandes : 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Dans le premier terminal :**
 
-### Analyzing the Bundle Size
+```bash
+cd frontend 
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Dans le second terminal :**
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+cd backend 
+npm start
+```
