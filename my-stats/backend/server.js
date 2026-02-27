@@ -79,6 +79,18 @@ app.post('/api/register', async (req, res) => {
       [firstname, lastname, email, hashedPassword, role]
     );
 
+    const newUserId = result.rows[0].user_id;
+
+    // Créer automatiquement les 4 clubs pour ce nouvel utilisateur
+    await pool.query(
+      `INSERT INTO clubs (club_name, city, user_id) VALUES
+        ('Fauv', 'Vincennes', $1),
+        ('Phœnix', 'Montrouge', $1),
+        ('Lutèce', 'Paris', $1),
+        ('Révolution''Air', 'Paris', $1)`,
+      [newUserId]
+    );
+
     res.status(201).json({
       success: true,
       message: 'Utilisateur créé avec succès',
@@ -123,6 +135,30 @@ app.post('/api/login', async (req, res) => {
     res.status(500).json({ success: false, message: 'Erreur serveur' });
   }
 });
+
+// API Ajout club
+
+app.post('/api/addClub', async(req,res)=>{
+  const {userId,clubName,city} = req.body;
+
+  if ( !clubName || !city) {
+    return res.status(400).json({ success: false, message: 'Champs obligatoires manquants' });
+  }
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO clubs (user_id, club_name, city)
+       VALUES ($1, $2, $3)
+       RETURNING *`,
+      [userId, clubName, city, ]
+    );
+
+    res.status(201).json({ success: true, training: result.rows[0] });
+  } catch (error) {
+    console.error('Erreur ajout entraînement:', error);
+    res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
+})
 
 // API Clubs 
 
@@ -185,7 +221,6 @@ app.post('/api/competitions', async (req, res) => {
 });
 
 // API Hat
-
 
 app.post('/api/hat', async (req, res) => {
   const { userId, name, location, date, nb_matchs, goals, wins, losses, final_ranking } = req.body;
@@ -266,9 +301,7 @@ app.get('/api/stats/training/:userId', async (req, res) => {
     const result = await pool.query(`
       SELECT club_name, year, nb_sessions, total_goals, moyenne_par_semaine
       FROM stats_training_per_club
-      WHERE club_name IN (
-        SELECT club_name FROM clubs WHERE user_id = $1
-      )
+      WHERE user_id = $1
     `, [userId]);
 
     res.status(200).json({ success: true, stats: result.rows });
@@ -342,7 +375,6 @@ app.get('/api/stats/indoor/:userId', async (req, res) => {
 });
 
 // API Stats - Outdoor
-
 
 app.get('/api/stats/outdoor/:userId', async (req, res) => {
   const { userId } = req.params;

@@ -21,6 +21,10 @@ import Lutece from './Trainings/Lutece/Lutece';
 import Phoenix from './Trainings/Phoenix/Phoenix';
 import Revo from './Trainings/Revo/Revo';
 
+//Ajout de club pour les entraînements
+
+import AddClub from './Trainings/addClub/addClub';
+
 //Gestion Competition
 import Competition from './Competition/Competition';
 import Indoor from './Competition/Indoor/Indoor';
@@ -74,6 +78,12 @@ function App() {
         <Route path='/trainings/revo' element={
             <ProtectedRoute requiredRole="user">
                 <Revo />
+            </ProtectedRoute>
+        }/>
+
+         <Route path='/trainings/addClub' element={
+            <ProtectedRoute requiredRole="user">
+                <AddClub />
             </ProtectedRoute>
         }/>
 
