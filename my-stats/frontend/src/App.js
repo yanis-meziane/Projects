@@ -19,6 +19,7 @@ import Trainings from './Trainings/Trainings';
 import Fauv from './Trainings/Fauv/Fauv';
 import Lutece from './Trainings/Lutece/Lutece';
 import Phoenix from './Trainings/Phoenix/Phoenix';
+import Revo from './Trainings/Revo/Revo';
 
 //Gestion Competition
 import Competition from './Competition/Competition';
@@ -68,6 +69,12 @@ function App() {
           <ProtectedRoute requiredRole="user">
               <Phoenix />
           </ProtectedRoute>
+        }/>
+
+        <Route path='/trainings/revo' element={
+            <ProtectedRoute requiredRole="user">
+                <Revo />
+            </ProtectedRoute>
         }/>
 
          <Route path='/competition' element={

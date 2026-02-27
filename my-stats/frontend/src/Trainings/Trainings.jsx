@@ -19,6 +19,10 @@ export default function Trainings(){
                     <article className="trainingsBlocks">
                         <button onClick={()=>navigate('/trainings/phoenix')} className="trainingsButton">Les Phœnix</button>
                     </article>
+
+                    <article className="trainingsBlocks">
+                        <button onClick={()=>navigate('/trainings/revo')} className="trainingsButton">Les Revo</button>
+                    </article>
                 </section>
         </div>
     )
