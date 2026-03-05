@@ -70,7 +70,7 @@ app.post('/api/register', async (req, res) => {
 
     const userCount = await pool.query('SELECT COUNT(*) FROM users');
     const totalUsers = parseInt(userCount.rows[0].count);
-    const role = totalUsers === 0 ? 'admin' : 'user';
+    const role = Number.totalUsers === 0 ? 'admin' : 'user';
 
     const hashedPassword = await bcrypt.hash(password, 10);
 

@@ -45,49 +45,57 @@ export default function Hat() {
         <h1>Hat — Ajouter une compétition</h1>
 
         <article className="hatArticle">
-          <label>Nom du hat :
+          <label>
+            <span>Nom du hat :</span>
             <input type="text" name="name" value={formData.name} onChange={handleChange} required />
           </label>
         </article>
 
         <article className="hatArticle">
-          <label>Lieu :
+          <label>
+            <span>Lieu :</span>
             <input type="text" name="location" value={formData.location} onChange={handleChange} />
           </label>
         </article>
 
         <article className="hatArticle">
-          <label>Date :
+          <label>
+            <span>Date :</span>
             <input type="date" name="date" value={formData.date} onChange={handleChange} required />
           </label>
         </article>
 
         <article className="hatArticle">
-          <label>Nombre de matchs :
+          <label>
+            <span>Nombre de matchs :</span>
             <input type="number" name="nb_matchs" min="0" value={formData.nb_matchs} onChange={handleChange} />
           </label>
         </article>
 
         <article className="hatArticle">
-          <label>Goals :
+          <label>
+            <span>Goals :</span>
             <input type="number" name="goals" min="0" value={formData.goals} onChange={handleChange} />
           </label>
         </article>
 
         <article className="hatArticle">
-          <label>Victoires :
+          <label>
+            <span>Victoires :</span>
             <input type="number" name="wins" min="0" value={formData.wins} onChange={handleChange} />
           </label>
         </article>
 
         <article className="hatArticle">
-          <label>Défaites :
+          <label>
+            <span>Défaites :</span>
             <input type="number" name="losses" min="0" value={formData.losses} onChange={handleChange} />
           </label>
         </article>
 
         <article className="hatArticle">
-          <label>Classement final :
+          <label>
+            <span>Classement final :</span>
             <input type="number" name="final_ranking" min="1" value={formData.final_ranking} onChange={handleChange} />
           </label>
         </article>
