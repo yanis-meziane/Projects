@@ -49,13 +49,15 @@ export default function Lutece() {
         <h1>Lutèce — Ajouter un entraînement</h1>
 
         <article className="luteceArticle">
-          <label>Date :
+          <label>
+            <span>Date : </span>
             <input type="date" name="date" value={formData.date} onChange={handleChange} required />
           </label>
         </article>
 
         <article className="luteceArticle">
-          <label>Goals :
+          <label>
+            <span>Nombre de points : </span>
             <input type="number" name="goals" min="0" value={formData.goals} onChange={handleChange} />
           </label>
         </article>

@@ -49,13 +49,15 @@ export default function Phoenix() {
         <h1>Phœnix — Ajouter un entraînement</h1>
 
         <article className="phoenixArticle">
-          <label>Date :
+          <label>
+            <span>Date : </span>
             <input type="date" name="date" value={formData.date} onChange={handleChange} required />
           </label>
         </article>
 
         <article className="phoenixArticle">
-          <label>Goals :
+          <label>
+            <span>Nombre de points : </span>
             <input type="number" name="goals" min="0" value={formData.goals} onChange={handleChange} />
           </label>
         </article>

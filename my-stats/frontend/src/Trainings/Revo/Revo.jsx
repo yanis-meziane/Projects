@@ -49,13 +49,15 @@ export default function Revo() {
         <h1>Revolution'Air — Ajouter un entraînement</h1>
 
         <article className="revoArticle">
-          <label>Date :
+          <label>
+            <span>Date :</span>
             <input type="date" name="date" value={formData.date} onChange={handleChange} required />
           </label>
         </article>
 
         <article className="revoArticle">
-          <label>Goals :
+          <label>
+            <span>Nombre de point :</span>
             <input type="number" name="goals" min="0" value={formData.goals} onChange={handleChange} />
           </label>
         </article>
