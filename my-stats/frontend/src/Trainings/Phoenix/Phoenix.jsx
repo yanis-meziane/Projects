@@ -62,6 +62,13 @@ export default function Phoenix() {
           </label>
         </article>
 
+         <article className="phoenixArticle">
+          <label>
+            <span>Nombre d'assists : </span>
+            <input type="number" name="assists" min="0" value={formData.goals} onChange={handleChange} />
+          </label>
+        </article>
+
         <article className="phoenixArticle">
           <input id="submit" type="submit" defaultValue="Valider" />
         </article>

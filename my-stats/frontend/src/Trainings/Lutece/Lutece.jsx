@@ -62,6 +62,13 @@ export default function Lutece() {
           </label>
         </article>
 
+         <article className="luteceArticle">
+          <label>
+            <span>Nombre d'assists : </span>
+            <input type="number" name="assists" min="0" value={formData.goals} onChange={handleChange} />
+          </label>
+        </article>
+
         <article className="luteceArticle">
           <input id="submit" type="submit" defaultValue="Valider" />
         </article>

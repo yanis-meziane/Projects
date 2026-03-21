@@ -64,6 +64,13 @@ export default function Fauv() {
         </label>
       </article>
 
+       <article className="fauvArticle">
+          <label>
+            <span>Nombre d'assists : </span>
+            <input type="number" name="assists" min="0" value={formData.goals} onChange={handleChange} />
+        </label>
+      </article>
+
       <article className="fauvArticle">
          <input id="submit" type="submit" defaultValue="Valider" />
       </article>

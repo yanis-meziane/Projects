@@ -175,7 +175,7 @@ app.get('/api/clubs', async (req, res) => {
 // API Trainings
 
 app.post('/api/trainings', async (req, res) => {
-  const {userId, clubId, date, goals } = req.body;
+  const {userId, clubId, date, goals,assists } = req.body;
 
   if (!userId || !clubId || !date) {
     return res.status(400).json({ success: false, message: 'Champs obligatoires manquants' });
@@ -183,10 +183,10 @@ app.post('/api/trainings', async (req, res) => {
 
   try {
     const result = await pool.query(
-      `INSERT INTO trainings (user_id, club_id, date, goals)
-       VALUES ($1, $2, $3, $4)
+      `INSERT INTO trainings (user_id, club_id, date, goals, assists)
+       VALUES ($1, $2, $3, $4, $5)
        RETURNING *`,
-      [userId, clubId, date, goals || 0]
+      [userId, clubId, date, goals || 0, assists || 0]
     );
 
     res.status(201).json({ success: true, training: result.rows[0] });
@@ -199,7 +199,7 @@ app.post('/api/trainings', async (req, res) => {
 // API Competitions (Tournois)
 
 app.post('/api/competitions', async (req, res) => {
-  const { userId, name, location, date, nb_matchs, goals, wins, losses, final_ranking } = req.body;
+  const { userId, name, location, date, nb_matchs, goals, assists, wins, losses, final_ranking } = req.body;
 
   if (!userId || !name || !date) {
     return res.status(400).json({ success: false, message: 'Champs obligatoires manquants' });
@@ -208,9 +208,9 @@ app.post('/api/competitions', async (req, res) => {
   try {
     const result = await pool.query(
       `INSERT INTO tournois (user_id, name, location, date, nb_matchs, goals, wins, losses, final_ranking)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
        RETURNING *`,
-      [userId, name, location, date, nb_matchs || 0, goals || 0, wins || 0, losses || 0, final_ranking || null]
+      [userId, name, location, date, nb_matchs || 0, goals || 0, assists || 0,  wins || 0, losses || 0, final_ranking || null]
     );
 
     res.status(201).json({ success: true, competition: result.rows[0] });
@@ -223,7 +223,7 @@ app.post('/api/competitions', async (req, res) => {
 // API Hat
 
 app.post('/api/hat', async (req, res) => {
-  const { userId, name, location, date, nb_matchs, goals, wins, losses, final_ranking } = req.body;
+  const { userId, name, location, date, nb_matchs, goals, assists, wins, losses, final_ranking } = req.body;
 
   if (!userId || !name || !date) {
     return res.status(400).json({ success: false, message: 'Champs obligatoires manquants' });
@@ -231,10 +231,10 @@ app.post('/api/hat', async (req, res) => {
 
   try {
     const result = await pool.query(
-      `INSERT INTO hats (user_id, name, location, date, nb_matchs, goals, wins, losses, final_ranking)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      `INSERT INTO hats (user_id, name, location, date, nb_matchs, goals, assists, wins, losses, final_ranking)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
        RETURNING *`,
-      [userId, name, location, date, nb_matchs || 0, goals || 0, wins || 0, losses || 0, final_ranking || null]
+      [userId, name, location, date, nb_matchs || 0, goals || 0, assists || 0, wins || 0, losses || 0, final_ranking || null]
     );
 
     res.status(201).json({ success: true, hat: result.rows[0] });
@@ -247,7 +247,7 @@ app.post('/api/hat', async (req, res) => {
 // API Indoor (championnat)
 
 app.post('/api/indoor', async (req, res) => {
-  const { userId, name, location, date, nb_matchs, goals, wins, losses, final_ranking } = req.body;
+  const { userId, name, location, date, nb_matchs, goals, assists, wins, losses, final_ranking } = req.body;
 
   if (!userId || !name || !date) {
     return res.status(400).json({ success: false, message: 'Champs obligatoires manquants' });
@@ -255,10 +255,10 @@ app.post('/api/indoor', async (req, res) => {
 
   try {
     const result = await pool.query(
-      `INSERT INTO championnat (user_id, name, location, date, nb_matchs, goals, wins, losses, final_ranking)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      `INSERT INTO championnat (user_id, name, location, date, nb_matchs, goals, assists, wins, losses, final_ranking)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
        RETURNING *`,
-      [userId, name, location, date, nb_matchs || 0, goals || 0, wins || 0, losses || 0, final_ranking || null]
+      [userId, name, location, date, nb_matchs || 0, goals || 0, assists || 0,  wins || 0, losses || 0, final_ranking || null]
     );
 
     res.status(201).json({ success: true, indoor: result.rows[0] });
@@ -271,7 +271,7 @@ app.post('/api/indoor', async (req, res) => {
 // API Outdoor
 
 app.post('/api/outdoor', async (req, res) => {
-  const { userId, name, location, date, nb_matchs, goals, wins, losses, final_ranking } = req.body;
+  const { userId, name, location, date, nb_matchs, goals, wins, assists, losses, final_ranking } = req.body;
 
   if (!userId || !name || !date) {
     return res.status(400).json({ success: false, message: 'Champs obligatoires manquants' });
@@ -279,10 +279,10 @@ app.post('/api/outdoor', async (req, res) => {
 
   try {
     const result = await pool.query(
-      `INSERT INTO championnat (user_id, name, location, date, nb_matchs, goals, wins, losses, final_ranking)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      `INSERT INTO championnat (user_id, name, location, date, nb_matchs, goals, assists, wins, losses, final_ranking)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
        RETURNING *`,
-      [userId, name, location, date, nb_matchs || 0, goals || 0, wins || 0, losses || 0, final_ranking || null]
+      [userId, name, location, date, nb_matchs || 0, goals || 0, assists || 0, wins || 0, losses || 0, final_ranking || null]
     );
 
     res.status(201).json({ success: true, outdoor: result.rows[0] });
@@ -319,7 +319,7 @@ app.get('/api/stats/tournaments/:userId', async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT name AS tournament_name, location, year AS annee,
-             nb_matchs, goals, wins, losses, final_ranking
+             nb_matchs, goals, assists, wins, losses, final_ranking
       FROM tournois
       WHERE user_id = $1
       ORDER BY year DESC, name
@@ -340,7 +340,7 @@ app.get('/api/stats/hats/:userId', async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT name AS tournament_name, location, year AS annee,
-             nb_matchs, goals, wins, losses, final_ranking
+             nb_matchs, goals, assists, wins, losses, final_ranking
       FROM hats
       WHERE user_id = $1
       ORDER BY year DESC, name
@@ -361,7 +361,7 @@ app.get('/api/stats/indoor/:userId', async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT name AS tournament_name, location, year AS annee,
-             nb_matchs, goals, wins, losses, final_ranking
+             nb_matchs, goals, assists, wins, losses, final_ranking
       FROM championnat
       WHERE user_id = $1
       ORDER BY year DESC, name
@@ -382,7 +382,7 @@ app.get('/api/stats/outdoor/:userId', async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT name AS tournament_name, location, year AS annee,
-             nb_matchs, goals, wins, losses, final_ranking
+             nb_matchs, goals, assists, wins, losses, final_ranking
       FROM championnat
       WHERE user_id = $1
       ORDER BY year DESC, name

@@ -71,6 +71,7 @@ export default function Stats() {
             <th>Année</th>
             <th>Nb matchs</th>
             <th>Goals</th>
+            <th>Assists</th>
             <th>Victoires</th>
             <th>Défaites</th>
             <th>Classement final</th>
@@ -84,6 +85,7 @@ export default function Stats() {
               <td>{row.annee}</td>
               <td>{row.nb_matchs}</td>
               <td>{row.goals}</td>
+              <td>{row.assists}</td>
               <td>{row.wins}</td>
               <td>{row.losses}</td>
               <td>{row.final_ranking ?? '—'}</td>
@@ -109,7 +111,8 @@ export default function Stats() {
               <tr>
                 <th>Club</th>
                 <th>Total goals</th>
-                <th>Moyenne par semaine</th>
+                <th>Moyenne</th>
+                <th>Moyenne assists</th>
               </tr>
             </thead>
             <tbody>
@@ -118,6 +121,7 @@ export default function Stats() {
                   <td>{row.club_name}</td>
                   <td>{row.total_goals}</td>
                   <td>{row.moyenne_par_semaine}</td>
+                  <td>{row.assists_par_semaine}</td>
                 </tr>
               ))}
             </tbody>

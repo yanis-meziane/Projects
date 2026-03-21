@@ -34,8 +34,8 @@ h1 {
 }
 
 .statsCard {
-    width: 50%;
-    min-width: 280px;
+    width: 60%;
+    min-width: 300px;
     padding: 2rem;
     margin: 2rem;
     background-color: rgba(255, 255, 255, 0.55);
