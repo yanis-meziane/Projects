@@ -3,11 +3,12 @@ import "./Outdoor.css";
 
 export default function Outdoor() {
   const [formData, setFormData] = useState({
+    division: '',
     date: '',
-    name: '',
     location: '',
     nb_matchs: 0,
     goals: 0,
+    assists: 0,
     wins: 0,
     losses: 0,
     final_ranking: ''
@@ -46,8 +47,8 @@ export default function Outdoor() {
 
         <article className="outdoorArticle">
           <label>
-            <span>Nom du hat : </span>
-            <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+            <span>Division : </span>
+            <input type="text" name="name" value={formData.division} onChange={handleChange} required />
           </label>
         </article>
 
@@ -74,8 +75,15 @@ export default function Outdoor() {
 
         <article className="outdoorArticle">
           <label>
-            <span>Nombre de points : </span>
+            <span>Goals : </span>
             <input type="number" name="goals" min="0" value={formData.goals} onChange={handleChange} />
+          </label>
+        </article>
+
+        <article className="outdoorArticle">
+          <label>
+            <span>Assists : </span>
+            <input type="number" name="assists" min="0" value={formData.assists} onChange={handleChange} />
           </label>
         </article>
 

@@ -207,7 +207,7 @@ app.post('/api/competitions', async (req, res) => {
 
   try {
     const result = await pool.query(
-      `INSERT INTO tournois (user_id, name, location, date, nb_matchs, goals, wins, losses, final_ranking)
+      `INSERT INTO tournois (user_id, name, location, date, nb_matchs, goals, assists, wins, losses, final_ranking)
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
        RETURNING *`,
       [userId, name, location, date, nb_matchs || 0, goals || 0, assists || 0,  wins || 0, losses || 0, final_ranking || null]
@@ -299,7 +299,7 @@ app.get('/api/stats/training/:userId', async (req, res) => {
 
   try {
     const result = await pool.query(`
-      SELECT club_name, year, nb_sessions, total_goals, moyenne_par_semaine
+      SELECT club_name, year, nb_sessions, total_goals, moyenne_par_semaine,assists_par_semaine
       FROM stats_training_per_club
       WHERE user_id = $1
     `, [userId]);

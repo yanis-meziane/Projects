@@ -67,7 +67,7 @@ export default function Fauv() {
        <article className="fauvArticle">
           <label>
             <span>Nombre d'assists : </span>
-            <input type="number" name="assists" min="0" value={formData.goals} onChange={handleChange} />
+            <input type="number" name="assists" min="0" value={formData.assists} onChange={handleChange} />
         </label>
       </article>
 

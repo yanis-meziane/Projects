@@ -3,11 +3,12 @@ import "./Indoor.css";
 
 export default function Indoor() {
   const [formData, setFormData] = useState({
-    date: '',
-    name: '',
+    division: '',
     location: '',
+    date: '',
     nb_matchs: 0,
     goals: 0,
+    assists: 0,
     wins: 0,
     losses: 0,
     final_ranking: ''
@@ -46,8 +47,8 @@ export default function Indoor() {
 
         <article className="indoorArticle">
           <label>
-            <span>Nom du championnat :</span>
-            <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+            <span>Division :</span>
+            <input type="text" name="name" value={formData.division} onChange={handleChange} required />
           </label>
         </article>
 
@@ -76,6 +77,13 @@ export default function Indoor() {
           <label>
             <span>Goals : </span>
             <input type="number" name="goals" min="0" value={formData.goals} onChange={handleChange} />
+          </label>
+        </article>
+
+        <article className="indoorArticle">
+          <label>
+            <span>Assists : </span>
+            <input type="number" name="assists" min="0" value={formData.assists} onChange={handleChange} />
           </label>
         </article>
 

@@ -8,6 +8,7 @@ export default function Hat() {
     location: '',
     nb_matchs: 0,
     goals: 0,
+    assists: 0,
     wins: 0,
     losses: 0,
     final_ranking: ''
@@ -76,6 +77,13 @@ export default function Hat() {
           <label>
             <span>Goals :</span>
             <input type="number" name="goals" min="0" value={formData.goals} onChange={handleChange} />
+          </label>
+        </article>
+
+         <article className="hatArticle">
+          <label>
+            <span>Assists :</span>
+            <input type="number" name="goals" min="0" value={formData.assists} onChange={handleChange} />
           </label>
         </article>
 

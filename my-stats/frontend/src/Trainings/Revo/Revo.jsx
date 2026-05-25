@@ -63,6 +63,13 @@ export default function Revo() {
         </article>
 
         <article className="revoArticle">
+          <label>
+            <span>Nombre d'assists : </span>
+            <input type="number" name="assists" min="0" value={formData.assists} onChange={handleChange} />
+          </label>
+        </article>
+
+        <article className="revoArticle">
           <input id="submit" type="submit" defaultValue="Valider" />
         </article>
       </form>

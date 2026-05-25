@@ -8,8 +8,10 @@ export default function Tournois() {
     location: '',
     nb_matchs: 0,
     goals: 0,
+    assists: 0,
     wins: 0,
     losses: 0,
+    egality: 0,
     final_ranking: ''
   });
   const [message, setMessage] = useState('');
@@ -75,6 +77,12 @@ export default function Tournois() {
         </article>
 
         <article className="tournoisArticle">
+          <label>Assists :
+            <input type="number" name="assists" min="0" value={formData.assists} onChange={handleChange} />
+          </label>
+        </article>
+
+        <article className="tournoisArticle">
           <label>Victoires :
             <input type="number" name="wins" min="0" value={formData.wins} onChange={handleChange} />
           </label>
@@ -83,6 +91,12 @@ export default function Tournois() {
         <article className="tournoisArticle">
           <label>Défaites :
             <input type="number" name="losses" min="0" value={formData.losses} onChange={handleChange} />
+          </label>
+        </article>
+
+        <article className="tournoisArticle">
+          <label>Égalité :
+            <input type="number" name="egality" min="0" value={formData.egality} onChange={handleChange} />
           </label>
         </article>
 
